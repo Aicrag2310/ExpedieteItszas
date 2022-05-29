@@ -1,0 +1,49 @@
+body{
+    background-color: #032c55;
+}
+#titulo{
+    position: relative;
+    left: 370px;
+}
+
+
+
+@media (min-width: 576px) and (max-width: 991.98px) and (orientation:portrait) {
+    body{
+        background-color: red;
+    }
+}
+@media (max-width: 377px)and (orientation:portrait) {
+    body{
+        background-color: blue;
+    }
+    #titulo{
+        position: relative;
+        font-size: 9px;
+        left: 10px;
+        text-align: center;
+    }
+ }
+
+ @media (min-width: 379px) and (max-width: 415.98px)and (orientation:portrait) {
+    body{
+        background-color: yellow;
+    }
+    #titulo{
+        position: relative;
+        font-size: 20px;
+        left: 10px;
+        text-align: center;
+    }
+ }
+/*landscape*/
+@media (min-width: 665px) and (max-width: 991.98px) and (orientation:portrait) {
+    body{
+        background-color: orange;
+    }
+    
+}
+@media (min-width: 415px) and (max-width: 664px)and (orientation:portrait) {
+ }
+ @media (min-width: 280px) and (max-width: 376px)and (orientation:portrait) {
+ }
