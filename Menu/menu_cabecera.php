@@ -32,22 +32,22 @@ if ($title=="Configuración"){
 if ($title=="Expediente Clinico ITSZaS"){
     $css="../Menu/css/estilo_menu.css";
     $menu_cabecera="../Menu/menu_cabecera.php";
-    $img1="../Menu/img/logo_medicina_azul.png";
+    $img1="../Menu/img/Caduceo.png"; ###################################
     $agenda="../Agenda/Agenda_Interfaz.php";
-    $iconagenda="../Menu/img/agenda.ico";
+    $iconagenda="../Menu/img/A.png";########################
     $registro_paciente="../Expediente/Expedientes.php";
-    $imgexpediente="../Menu/img/expediente.ico";
+    $imgexpediente="../Menu/img/E.png";##########################
     $imgconsulta="../Menu/img/consulta.ico";
     $confi="../Menu/configuracion.php";
-    $img_confi="../Menu/img/configuracion.ico";
+    $img_confi="../Menu/img/C.png"; ######################
     $php_cerrar="../Menu/php/cerrar_sesion.php";
-    $imagensalir="../Menu/img/salir.ico";
+    $imagensalir="../Menu/img/Salir.png"; ###################################
     $trata = "../Expediente/Datos_Del_Paciente/Dat_Pac_Interfaz.php";
 }
 if ($title=="Registro de paciente"){
     $css="../Menu/css/estilo_menu.css";
     $menu_cabecera="../Menu/menu_cabecera.php";
-    $img1="../Menu/img/logo_medicina_azul.png";
+    $img1="../Menu/img/Caduceo.png";
     $agenda="../Agenda/Agenda_Interfaz.php";
     $iconagenda="../Menu/img/agenda.ico";
     $registro_paciente="Expedientes.php";
@@ -80,7 +80,7 @@ if (!isset($_SESSION['usuario'])) {
     <div id="sidemenu" class="menu-collapsed">
         <!-- HEADER (CABEZERA) -->
         <div id="header">
-            <div id="title"><span>Expediente clinico</span></div>
+            <div id="title"><span>Expediente clínico</span></div>
             <!-- MENU -->
             <div id="menu-btn">
                 <div class="btn-hamburguer"></div>
@@ -111,26 +111,20 @@ if (!isset($_SESSION['usuario'])) {
 
             </div>
             <div class="item">
-                <a href="">
-                <div class="icon"> <img src=<?php echo $imgconsulta;?> alt=""></div>
-                    <div class="title"><span>Consulta</span></div>
+                <a href=<?php echo $confi;?>>
+                <div class="icon"> <img src=<?php echo $img_confi;?> alt=""></div>
+                    <div class="title"><span>Configuración</span></div>
                 </a>
 
             </div>
         
             <div class="item separator">
             </div>
-            <div class="item">
-                <a href="<?php echo $confi;?>">
-                    <div class="icon"> <img src=<?php echo $imgexpediente;?> alt=""></div>
-                    <div class="title"><span>Configuración</span></div>
-                </a>
 
-            </div>
             <div class="item">
                 <a href=<?php echo $php_cerrar;?>>
                     <div class="icon"> <img src=<?php echo $imagensalir;?> alt=""></div>
-                    <div class="title"><span>Cerrar Sesión</span></div>
+                    <div class="title"><span>Cerrar sesión</span></div>
                 </a>
             </div>
         </div>

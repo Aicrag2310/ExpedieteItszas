@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+.izquierda{
+    width: 45%;
+    
+}
+.derecha{
+    width: 45%;
+}
+.input-field label{
+    width: 200px;;
+}
+.fields button{
+    position: relative;
+  left: 23%;
+  width: 100px;
+  height: 40px;
+
+  display: inline-block;
+  font-size: 1em;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #007261;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  top: 315px;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.5);
+}
+
+
+/*:::Boton-Modal:::*/
+.boton-modal{
+    position: relative;
+    width: 100%;
+    height: 10%;
+    top: 50%;
+    left: 35%;
+}
+#tablaSignos{
+    position: relative;
+    width: 100%;
+    height: 50%;
+}
+.boton-modal label{
+    position: relative;
+    padding: 10px 15px;
+    font-size: 15px;
+    background-color: #005e2a;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+.boton-modal label:hover{
+    background-color: #023017;
+}
+/*:::Fin Boton-Modal:::*/
+
+
+/*:::Ventana Modal:::*/
+#btn-modal{
+    display: none;
+}
+.container-modal{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0; left: 0;
+    background-color: rgba(144, 148, 150, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.container-modal input{
+    width: 250px;
+}
+#btn-modal:checked ~ .container-modal{
+    display: flex;
+}
+
+.content-modal{
+    width: 600px;;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+.content-modal h2{
+    margin-bottom: 15px;
+}
+.content-modal p{
+    padding: 15px 0px;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+}
+.content-modal .btn-cerrar{
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+.content-modal .btn-cerrar label{
+    position: relative;
+    left: 0%;
+    background-color: #007261;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 8px;
+    text-align:center;
+
+
+}
+#padecimientoText{
+    position: relative;
+    width: 95%;
+    height: 60%;
+    resize: none;
+}
+
+#motivoText{
+    position: relative;
+    width: 95%;
+    height: 60%;
+    resize: none;
+}
+#DiagnosticoText{
+    position: relative;
+    width: 100%;
+    height: 65%;
+    resize: none;
+}
+
+#padecimiento{
+    position: relative;
+    left: 2%;
+    width: 50%;
+    height: 100%;
+    
+}
+
+#motivo{
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+
+
+
+#Diagnostico{
+    position: relative;
+    width: 100%;
+    height: 25%;
+}
+
+#ayuda{
+    position: relative;
+    width: 300px;
+    height: 500px;
+}
+
+#ayuda2{
+    position: relative;
+    background-color: gray;
+    width: 300px;
+    height: 500px;
+    
+}
+
+#nombre_ayuda{
+    position: relative;
+    text-align: center;
+    width: 10px;
+}
+
+
+
+
+.content-modal .btn-cerrar label:hover{
+    background-color: #26F259;
+    
+}
+.cerrar-modal{
+    width:100%;
+    height: 100vh;
+    position: absolute;
+    top:0; left: 0;
+    z-index: -1;
+}
+#reloj { 
+    float: right; margin: 1em 3em 1em 1em; 
+    position: absolute;
+    color: white;
+    top: 0%;
+    left: 85%;
+}
+
+
+@media screen and (max-width:800px) {
+    .content-modal{
+        width: 70%;
+    }
+    .izquierda{
+        float: left;
+        
+    }
+    .derecha{
+        float: right;
+    }
+    .fields button{
+        position: relative;
+        left: 100px;
+        top: 60px;
+    }
+    #padecimiento{
+        position: relative;
+        width: 200px;
+        height: 200px;
+    }
+    #motivo{
+        position: relative;
+        width: 200px;
+        height: 200px;
+    }
+    #Diagnostico{
+        position: relative;
+        width: 200px;
+        height: 200px;
+    }
+    #contenedor{
+        
+        width: 200px;
+        
+    }
+    .boton-modal label{
+        font-size: 9px;
+    }
+    #ayuda2{
+        display: none;
+       
+    } 
+    #nombre_ayuda{
+        display: none;
+        
+    
+    }
+
+    
+  
+}
+/*:::Fin Ventana Modal:::*/
+

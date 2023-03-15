@@ -48,7 +48,7 @@ body {
 /* contenedor del login a la izquierda */
 #imagen{
     position: relative;
-    top: -0px; /* ajustar los valores para mover la imagen */
+    top: 0px; /* ajustar los valores para mover la imagen */
     left: 70px; 
 }
 
@@ -62,7 +62,7 @@ body {
     min-width: 760px;
     max-width:10px;
     width: 90%;
-    background: rgba(8, 133, 39, 0.24);
+    background: rgba(29, 207, 204, 0.24);
     /*background: rgba(61, 255, 35, 0.1);*/
     padding: -10px;
     border-radius: 0px;
@@ -95,7 +95,7 @@ body {
 /* Boton de entrar */
 #entrar{font-family: 'Overpass', sans-serif;
     border-radius: 12px;
-    background-color: #47a386;
+    background-color: #007261;
     color: #ffffff;
    
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -240,13 +240,6 @@ hr {
 
         /*opacity: 0.50;
         filter: alpha(opacity=50);*/
-
-      
-
-     
-     
-
-
       
     }
     

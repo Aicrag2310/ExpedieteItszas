@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+.navExp {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  background-color: #007261;
+  border-radius: 8px;
+  text-align: center;
+  display:inline-flex;
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif !important;
+
+}
+.navExp a{
+  line-height: 25px;
+  height: 100%;
+  font-size: 18px;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 1px  0px 5px rgb(255, 255, 255),
+               0px  1px 5px rgb(255, 255, 255),
+              -1px  0px 5px rgb(255, 252, 255),
+               0px -1px 5px rgb(255, 255, 255);
+  font-weight: bold;
+}
+.navExp .animation {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  z-index: 0;
+  transition: all .5s ease 0s;
+  border-radius: 8px;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+.navExp a:nth-child(1) {
+  width: 20%;
+}
+.navExp a:nth-child(2) {
+  width: 20%;
+}
+.navExp a:nth-child(3) {
+  width: 20%;
+}
+.navExp a:nth-child(4) {
+  width: 20%;
+}
+.navExp a:nth-child(5) {
+  width: 20%;
+}
+.navExp .start-home, a:nth-child(1):hover~.animation {
+  width: 20%;
+  left: 0;
+  background-color: #c4dfe6;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.37);
+}
+.navExp .start-about, a:nth-child(2):hover~.animation {
+  width: 20%;
+  left: 20%;
+  background-color: #badde1;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.37);
+}
+.navExp .start-blog, a:nth-child(3):hover~.animation {
+  width: 20%;
+  left: 40%;
+  background-color: #a3d7d7;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.37);
+}
+.navExp .start-portefolio, a:nth-child(4):hover~.animation {
+  width: 20%;
+  left: 60%;
+  background-color: #91d2ce;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.37);
+}
+.navExp .start-contact, a:nth-child(5):hover~.animation {
+  width: 20%;
+  left: 80%;
+  background-color: #88d0ca;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.37);
+}

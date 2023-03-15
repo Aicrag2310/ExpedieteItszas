@@ -1,12 +1,12 @@
 .container {
   position: relative;
-  width: 80%;
+  width: 85%;
   border-radius: 6px;
   padding: 30px;
   left: 100px;
   margin: 0 15px;
   background-color: rgba(255, 255, 255, 0);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  /*box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);*/
 }
 
 .container header {
@@ -15,7 +15,6 @@
   font-weight: 600;
   color: #333;
 }
-
 
 .container header::before {
   content: "";
@@ -48,10 +47,17 @@
   transform: translateX(100%);
 }
 
+#Consultas{
+  position: absolute;
+  width: 5%;
+  left: 92%;
+  top: 30%;
+  text-decoration: none;
+  padding: .4em .5em;
+}
 
 body {
-  background: linear-gradient(270deg, #9cd7df, #1d6d27);
-  font-family: sans-serif;
+  background: linear-gradient(270deg, #c4dfe6, #84cfc8);
   font-weight: 100;
   margin: 0;
   padding: 50px
@@ -63,7 +69,7 @@ body {
   height: 75px;
   top: -40px;
   position: absolute;
-  background: rgba(0, 255, 8, 0.315);
+  background: #007261;
   z-index: -1;
 }
 
@@ -86,7 +92,7 @@ body {
   bottom: 0;
   width: 0;
   height: 0;
-  border-left: 37.5px solid rgba(0, 255, 8, 0.315);
+  border-left: 37.5px solid #007261;
   border-top: 37.5px solid transparent;
   border-bottom: 37.5px solid transparent;
 }
@@ -177,17 +183,15 @@ table.rwd_auto {
   bottom: 5px;
   top: -50px;
   font-size: 40px;
-  font-family: Arial;
 }
 
 .CajasText {
   text-align: center;
-  font-family: 'Overpass', sans-serif;
   font-size: 100%;
   color: #000000;
 
   display: block;
-  width: 15%;
+  width: 13%;
   height: 35px;
 
   margin-bottom: 10px;
@@ -201,44 +205,45 @@ table.rwd_auto {
   -webkit-border-radius: 3px 3px 3px 3px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.37);
 }
-
-#nomb {
+#cont {
   position: absolute;
   left: 0%;
+}
+#nomb {
+  position: absolute;
+  left: 15%;
 }
 
 #pate {
   position: absolute;
-  left: 18%;
+  left: 30%;
 }
 
 #mater {
   position: absolute;
-  left: 36%;
+  left: 45%;
 }
-
 #sex {
   position: absolute;
-  left: 54%;
+  left: 60%;
 }
 
 #date {
   position: absolute;
-  left: 72%;
+  left: 75%;
 }
 
 .bubbly-button {
   position: relative;
-  left: 92%;
+  left: 93%;
   width: 100px;
   height: 40px;
 
-  font-family: "Helvetica", "Arial", sans-serif;
   display: inline-block;
   font-size: 1em;
   -webkit-appearance: none;
   appearance: none;
-  background-color: rgb(0, 60, 255);
+  background-color: #007261;
   color: #fff;
   border-radius: 4px;
   border: none;
@@ -292,6 +297,70 @@ table.rwd_auto {
 }
 
 .bubbly-button.animate:after {
+  display: block;
+  animation: bottomBubbles ease-in-out 0.75s forwards;
+}
+
+
+.bubbly-button2 {
+  display: inline-block;
+  font-size: 1em;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #007261;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.5);
+}
+
+.bubbly-button2:focus {
+  outline: 0;
+}
+
+.bubbly-button2:before,
+.bubbly-button2:after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 140%;
+  height: 100%;
+  left: -20%;
+  z-index: -1000;
+  transition: all ease-in-out 0.5s;
+  background-repeat: no-repeat;
+}
+
+.bubbly-button2:before {
+  display: none;
+  top: -75%;
+  background-image: radial-gradient(circle, #1eff00 20%, transparent 20%), radial-gradient(circle, transparent 20%, #ff0081 20%, transparent 30%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+}
+
+.bubbly-button2:after {
+  display: none;
+  bottom: -75%;
+  background-image: radial-gradient(circle, #1eff00 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+}
+
+.bubbly-button2:active {
+  color: #000000;
+  transform: scale(0.9);
+  background-color: #1eff00;
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.7);
+}
+
+.bubbly-button2.animate:before {
+  display: block;
+  animation: topBubbles ease-in-out 0.75s forwards;
+}
+
+.bubbly-button2.animate:after {
   display: block;
   animation: bottomBubbles ease-in-out 0.75s forwards;
 }
@@ -351,7 +420,7 @@ thead{
 }
 
 thead th {
-  background-color: #0088ffb9;
+  background-color: #007261;
   ;
 }
 tbody{

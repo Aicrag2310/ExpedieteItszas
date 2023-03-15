@@ -1,16 +1,16 @@
 <html class="html">
-    <style>
-    .html{
-        background: #000000
-    }
-    .textArea{
-        position: absolute;
-        left: 698px;
-        top: 100px;
-        height: 75%;
-        width: 75%;
-        resize: none;
-    }
-    </style>
-<textarea class="textArea" name="AreaText"></textarea>
+    <form method="POST">
+<div class="input-field">
+<label>Número</label>
+<input type="text" name="Numero" placeholder="Ingresa tu numero"?> />
+</div>
+<button class="nextBtn" id="boton" type="submit" name="submit">
+</form>
+<?php
+  if (isset($_POST['submit'])){
+    ############################# Datos Generales #############################
+    $N = $_POST['Numero'];
+    echo $N;
+  }
+    ?>
 </html>

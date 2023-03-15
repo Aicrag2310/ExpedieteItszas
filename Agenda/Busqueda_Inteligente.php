@@ -2,7 +2,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <?php
-include 'Conexion.php';
+include '../Conexion_BD/Conexion.php';
 
 if(isset($_GET['enviar'])){
 

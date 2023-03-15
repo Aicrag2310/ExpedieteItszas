@@ -17,7 +17,7 @@ include 'Menu_Clic_Derecho.php'
 
 <div class="aside3">
   <div id="pointer"></div>
-  <h2 id="TextoAgenda" id="atras1">Acciones del Expediente</h2>
+  <h2 id="TextoAgenda" id="atras1">Acciones del expediente</h2>
 </div>
 <div class="aside2">
 <?php

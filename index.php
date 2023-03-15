@@ -25,7 +25,7 @@
         <div id="contenedorcentrado">
             <div id="login">
                 <form id="login-form" class="form" action="" method="POST">
-                    <label for="usuario">Iniciar Sesión</label>
+                    <label for="usuario">Iniciar sesión</label>
                     <input id="usuario" type="text" name="username" placeholder="Usuario">
                     <br>
 

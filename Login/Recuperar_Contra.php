@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Recuperar Contraseña</title>
+    <title>Recuperar contraseña</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/recuperar.css">
@@ -23,7 +23,7 @@
         <div id="contenedorcentrado">
             <div id="login">
                 <form id="login-form" class="form" action="" method="POST">
-                    <label for="usuario">Recuperar Contraseña</label>
+                    <label for="usuario">Recuperar contraseña</label>
                     <br>
                     <br>
                     <input id="usuario" type="text" name="correo" placeholder="Correo electrónico">

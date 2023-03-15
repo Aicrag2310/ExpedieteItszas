@@ -50,7 +50,7 @@ class correo_clase{
                 // Content
                 $mail->isHTML(true);                                  // Set email format to HTML
                 $mail -> Subject = 'Recuperar Contrasena';
-                $mail -> Body = 'Tu contraseña actual es <b></b>'. $contrasena;
+                $mail -> Body = 'Se ha solicitado recuperar la contraseña del correo: '.$datos[0].' Tu contraseña actual es <b></b>'.$contrasena;
         
                 $mail->send();
                 return "Correcto";

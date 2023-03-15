@@ -1,5 +1,7 @@
+
 <?php
-include 'Conexion.php';
+
+include '../Conexion_BD/Conexion.php';
 $title = "Expediente Clinico ITSZaS";
 
 include('../Menu/menu_cabecera.php');
@@ -8,26 +10,42 @@ if (isset($_POST['nControl'])) {
   $NumControl = $_POST['nControl'];
   #echo $NumControl;
   $_SESSION["nControl"] = $NumControl;
+  #echo "Contro ",$NumControl;
   $id_direc="";
 
   $consulta = $conexion->query("SELECT * FROM datosgen_paciente WHERE No_Paciente='$NumControl'");
 
 ?>
-
   <head>
+<!--  
+    [chr(48) AL chr(57) == Numeros 0-9]
+    [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+    [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+    [chr(17) == Control]  
+    [chr(32) == Espacio] 
+    [chr(209) == Ñ Mayuscula] 
+    [chr(241) == ñ minuscula] -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!----======== CSS ======== -->
     <link rel="stylesheet" href="Dat_Pac_Interfaz.css">
     <div class="aside3">
       <div id="pointer"></div>
-      <h2 id="TextoAgenda" id="atras1">Datos del Paciente</h2>
+      <h2 id="TextoAgenda" id="atras1">Datos del paciente</h2>
     </div>
-    <div class="aside 2">
+
+    <div class="aside2">
       <?php
-      include 'Opciones_Defecto.php'
+        include '../OpcionesDeExpendientes/Opciones_Datos.php';
       ?>
+      <style>
+        <?php
+          $css = file_get_contents('../OpcionesDeExpendientes/Opciones_Defecto.css');
+          echo $css;
+        ?>
+      </style>
     </div>
 
     <div class="container">
@@ -44,14 +62,14 @@ if (isset($_POST['nControl'])) {
       ?>
       <!-- DIVISION PARA MANIPULAR EL FORMULARIO-->
       <div class="containerDat">
-        <header>Registro de nuevo paciente</header>
+        <header>Información del expediente</header>
         <?php
         while ($row = $consulta->fetch_array()) {
           $id_direc=$row['ID_Direccion'];
           $foto=$row['Foto'];
           
         ?>
-          <form action="" method="post" enctype="multipart/form-data" id="scroll">
+          <form action="" method="POST" enctype="multipart/form-data" id="scroll">
             <div class="form first">
               <div class="details personal">
                 <span class="title">Datos personales</span>
@@ -59,45 +77,115 @@ if (isset($_POST['nControl'])) {
 
                 <div class="fields">
                   <div class="input-field">
-                    <label>Nombre completo</label>
-                    <input type="text" name="Nombre" placeholder="Ingresa tu nombre" required value=<?php echo $row['Nombre'] ?> />
+                    <label>Nombre(s)</label>
+                    <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                    <input type="text" name="Nombre" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                    placeholder="Ingrese los nombres" required value="<?php echo $row['Nombre'] ?>" />
                   </div>
 
 
                   <div class="input-field">
-                    <label>Apellido Paterno</label>
-                    <input type="text" name="Paterno" placeholder="Ingresa tu apellido paterno" required value=<?php echo $row['Apellido_Paterno'] ?> />
+                    <label>Apellido paterno</label>
+                    <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                    <input type="text" name="Paterno" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                    placeholder="Ingrese el apellido paterno" required value="<?php echo $row['Apellido_Paterno'] ?>" />
                   </div>
 
 
                   <div class="input-field">
-                    <label>Apellido Materno</label>
-                    <input type="text" name="Materno" placeholder="Ingresa tu apellido materno" required value=<?php echo $row['Apellido_Materno'] ?> />
+                    <label>Apellido materno</label>
+                    <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                    <input type="text" name="Materno" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                    placeholder="Ingrese el apellido materno" required value="<?php echo $row['Apellido_Materno'] ?>" />
                   </div>
 
 
                   <div class="input-field">
-                    <label>Curp</label>
-                    <input type="text" name="Curp" placeholder="Ingresa tu curp" required value=<?php echo $row['CURP'] ?> />
+                    <label>CURP</label>
+                    <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                    <input type="text" name="Curp" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) ||  
+                                                                          (event.charCode >= 48 && event.charCode <= 57))"
+                    placeholder="Ingrese la CURP" required value="<?php echo $row['CURP'] ?>" />
                   </div>
 
                   <div class="input-field">
                     <label>Fecha de nacimiento</label>
-                    <input type="text" name="FNacimiento" placeholder="Ingresa tu fecha de nacimiento" required value=<?php echo $row['Fecha_Nacimiento'] ?> />
+                    
+                    <input type="date" name="FNacimiento" placeholder="Ingrese la fecha de nacimiento" required value=<?php echo $row['Fecha_Nacimiento'] ?> />
                   </div>
+
                   <div class="input-field">
                     <label>Edad</label>
-                    <input type="number" name="Edad" placeholder="Ingresa tu edad" required value=<?php echo $row['Edad'] ?> />
+                    <input type="number" name="Edad" maxlength="3"
+                    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    placeholder="Ingrese la edad" required value="<?php echo $row['Edad'] ?>" />
+                  </div>
+
+                  <div class="input-field" placeholder="Ingrese el sexo">
+                    <label>Sexo</label>
+                    <select name="Genero">
+                      <option>Hombre</option>
+                      <option>Mujer</option>
+                    </select>
+                    <!--
+                    <input type="text" name="Genero" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122))"
+                    placeholder="Ingrese el sexo" required value="<?php #echo $row['Sexo'] ?>" />
+                     -->
                   </div>
 
                   <div class="input-field">
-                    <label>Genero</label>
-                    <input type="text" name="Edad" placeholder="Ingresa tu genero" required value=<?php echo $row['Sexo'] ?> />
-                  </div>
-
-                  <div class="input-field">
-                    <label>Estado Civil</label>
-                    <input type="text" name="Edad" placeholder="Ingresa tu estado civil" required value=<?php echo $row['Estado_Civil'] ?> />
+                    <label>Estado civil</label>
+                    <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                    <input type="text" name="Civil" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                    placeholder="Ingrese el estado civil" required value="<?php echo $row['Estado_Civil'] ?>" />
                   </div>
                 </div>
               </div>
@@ -107,19 +195,25 @@ if (isset($_POST['nControl'])) {
                 <div class="fields">
                   <div class="input-field">
                     <label>Fólio</label>
-                    <input type="number" name="Folio" placeholder="Ingese su Fólio" required value=<?php echo $row['Folio_Seguro'] ?> />
+                    <input type="number" name="Folio" placeholder="Ingrese el fólio" required value="<?php echo $row['Folio_Seguro'] ?>" />
                   </div>
                   <div class="input-field">
-                    <label>Numero de paciente</label>
-                    <input type="number" name="NumPaciente" placeholder="Ingese su Numero de paciente" required value=<?php echo $row['No_Paciente'] ?> />
+                    <label>Numero de Control</label>
+                    <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                    <input type="text" name="NumPaciente" placeholder="Ingrese el número de paciente" required value="<?php echo $row['No_Paciente'] ?>" />
                   </div>
                   <div class="input-field">
                     <label>Fecha de alta</label>
-                    <input type="date" name="FAlta" placeholder="Ingresa tu fecha de alta" required value=<?php echo $row['Fecha_alta'] ?> />
+                    <input type="date" name="FAlta" placeholder="Ingrese la fecha de alta" required value=<?php echo $row['Fecha_alta'] ?> />
                   </div>
                 </div>
-
-
 
                 <div class="details ID">
                   <span class="title">Detalles de identidad</span>
@@ -127,72 +221,169 @@ if (isset($_POST['nControl'])) {
                   <div class="fields">
                     <div class="input-field">
                       <label>Ocupación</label>
-                      <input type="text" name="Ocupacion" placeholder="Ingese su ocupación" required value=<?php echo $row['Ocupacion'] ?> />
+                      <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                      <input type="text" name="Ocupacion" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                      placeholder="Ingrese la ocupación" required value="<?php echo $row['Ocupacion'] ?>" />
                     </div>
                     <div class="input-field">
                       <label>Escolaridad</label>
-                      <input type="text" name="Ocupacion" placeholder="Ingese su escolaridad" required value=<?php echo $row['Escolaridad'] ?> />
+                      <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                      <input type="text" name="Escola" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                      placeholder="Ingrese la escolaridad" required value="<?php echo $row['Escolaridad'] ?>" />
                     </div>
-
-
 
                     <div class="input-field">
                       <label>Religión</label>
-                      <input type="text" name="Religion" placeholder="Ingresa tu Religión" required value=<?php echo $row['Religion'] ?> />
+                      <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                      <input type="text" name="Religion" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                      placeholder="Ingrese la religión" required value="<?php echo $row['Religion'] ?>" />
                     </div>
 
                     <div class="input-field">
-                      <label>Telefono</label>
-                      <input type="number" name="Telefono" placeholder="Ingresa numero" required value=<?php echo $row['Telefono'] ?> />
+                      <label>Teléfono</label>
+                      <input type="number" name="Telefono" maxlength="10"
+                      oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      placeholder="Ingrese el número telefónico" required value="<?php echo $row['Telefono'] ?>" />
                     </div>
                     <div class="input-field">
                       <label>Nombre de tutor</label>
-                      <input type="text" name="Tutor" placeholder="Ingresa nombre del tutor" required value=<?php echo $row['Nombre_Tutor'] ?> />
+                      <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                      <input type="text" name="Tutor" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                      placeholder="Ingrese el nombre del tutor" required value="<?php echo $row['Nombre_Tutor'] ?>" />
                     </div>
                     <div class="input-field">
-                      <label>Numero de emergencia</label>
-                      <input type="number" name="NumEmergencia" placeholder="Ingresa tu numero emergencia" required value=<?php echo $row['No_Emergencia'] ?> />
+                      <label>Número de emergencia</label>
+                      <input type="number" name="NumEmergencia" maxlength="10"
+                      oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      placeholder="Ingrese el número de emergencia" required value="<?php echo $row['No_Emergencia'] ?>" />
                     </div>
                     <?php
                 }
                 $consulta2 = $conexion->query("SELECT * FROM direcccionpacientes WHERE ID_Direccion='$id_direc'");
                 while ($row = $consulta2->fetch_array()) {
+                  #echo $row['Municipio'];
       
                   ?>
 
                     <div class="input-field">
                       <label>Entidad</label>
-                      <input type="text" name="Municipio" placeholder="Ingresa tu entidad" required value=<?php echo $row['Estado'] ?> />
+                      <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                      <input type="text" name="Entidad" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) || (event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                      placeholder="Ingrese la entidad" required value="<?php echo $row['Estado'] ?> "/>
                     </div>
-
-
 
                     <div class="input-field">
                       <label>Municipio</label>
-                      <input type="text" name="Municipio" placeholder="Ingresa tu municipio" required value=<?php echo $row['Municipio'] ?> />
+                      <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                      <input type="text" name="Municipio" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) || (event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                      placeholder="Ingrese el municipio" required value="<?php echo $row['Municipio'] ?>" />
                     </div>
                     <div class="input-field">
-                      <label>Código Postal</label>
-                      <input type="text" name="CodPostal" placeholder="Ingresa tu Código Postal" required value=<?php echo $row['C_Postal'] ?> />
+                      <label>Código postal</label>
+                      <input type="number" name="CodPostal" maxlength="5"
+                      oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      placeholder="Ingrese el código postal" required value="<?php echo $row['C_Postal'] ?>" />
                     </div>
                  
                   <div class="input-field">
                     <label>Colonia</label>
-                    <input type="text" name="Colonia" placeholder="Ingresa tu colonia" required value=<?php echo $row['Colonia'] ?> />
+                    <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                    <input type="text" name="Colonia" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                    placeholder="Ingrese la colonia" required value="<?php echo $row['Colonia'] ?>" />
                   </div>
                   <div class="input-field">
                     <label>Calle</label>
-                    <input type="text" name="Calle" placeholder="Ingresa tu calle" required value=<?php echo $row['Calle'] ?> />
+                    <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                    <input type="text" name="Calle" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                    placeholder="Ingrese la calle" required value="<?php echo $row['Calle'] ?> "/>
                   </div>
                   <div class="input-field">
-                    <label>Numero</label>
-                    <input type="number" name="Numero" placeholder="Ingresa tu numero" required value=<?php echo $row['Numero_exterior'] ?> />
+                    <label>Número</label>
+                    <input type="number" name="Numero" placeholder="Ingrese el número" required value="<?php echo $row['Numero_exterior'] ?>" />
                   </div>
                 <?php 
               }?>
-
-
-
+              <!-- 
                   <div class="input-sel_foto">
                     <label>Subir foto</label>
 
@@ -201,40 +392,630 @@ if (isset($_POST['nControl'])) {
 
                   <div class="input-imagen">
                     <?php
-                    echo '<td>' .
-                    '<img src = "data:image/png;base64,' . base64_encode($foto) . '" width = "500px" height = "200px"/>'
-                    . '</td>';
+                    #echo '<td>' .
+                    #'<img src = "data:image/png;base64,' . base64_encode($foto) . '" width = "500px" height = "200px"/>'
+                    #. '</td>';
                     ?>
 
                   </div>
                   </div>
                 </div>
-
-
-
+                  -->
                 <button class="nextBtn" id="boton" type="submit" name="submit">
-                  <span class="btnText">Siguiente</span>
+                  <span class="btnText">Guardar</span>
                   <i class="uil uil-navigator"></i>
 
                 </button>
           </form>
-
-
-
-
-
-
-
       </div>
-
-
     </div>
-
     </body>
-
     </html>
   <?php
-} else {
+  if (isset($_POST['submit'])){
+    ############################# Datos Generales #############################
+    $N = $_POST['Nombre'];
+    $P = $_POST['Paterno'];
+    $M = $_POST['Materno'];
+    $C = $_POST['Curp'];
+    $FN = $_POST['FNacimiento'];
+    $E = $_POST['Edad'];
+    $G = $_POST['Genero'];
+    $Ci = $_POST['Civil'];
+    $F = $_POST['Folio'];
+    $NP = $_POST['NumPaciente'];
+    $FA = $_POST['FAlta'];
+    $O = $_POST['Ocupacion'];
+    $Es = $_POST['Escola'];
+    $R = $_POST['Religion'];
+    $T = $_POST['Telefono'];
+    $Tu = $_POST['Tutor'];
+    $NE = $_POST['NumEmergencia'];
+
+    #$image = $_FILES($_FILES["image"]["tmp_name"]);
+    #$imgContent = addslashes(file_get_contents($image));
+    #echo $N;
+
+     ############################# Ejecucion #############################
+     $sSQL="Update datosgen_paciente Set Nombre ='$N' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="Update datosgen_paciente Set Apellido_Paterno ='$P' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="Update datosgen_paciente Set Apellido_Materno ='$M' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="Update datosgen_paciente Set Foto ='$imgContent' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="Update datosgen_paciente Set CURP ='$C' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="Update datosgen_paciente Set Fecha_Nacimiento ='$FN' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="Update datosgen_paciente Set Edad ='$E' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="Update datosgen_paciente Set Sexo ='$G' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="Update datosgen_paciente Set Estado_Civil ='$Ci' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="Update datosgen_paciente Set Folio_Seguro ='$F' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="Update datosgen_paciente Set No_Paciente ='$NP' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="Update datosgen_paciente Set Fecha_alta ='$FA' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="Update datosgen_paciente Set Ocupacion ='$O' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="Update datosgen_paciente Set Escolaridad ='$Es' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="Update datosgen_paciente Set Religion='$R' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="Update datosgen_paciente Set Telefono='$T' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="Update datosgen_paciente Set Nombre_Tutor='$Tu' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="Update datosgen_paciente Set No_Emergencia='$NE' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+    ############################# Direcciones #############################
+    $En = $_POST['Entidad'];
+    $Mu = $_POST['Municipio'];
+    echo $Mu;
+    $Cp = $_POST['CodPostal'];
+    $Co = $_POST['Colonia'];
+    $Ca = $_POST['Calle'];
+    $Nu = $_POST['Numero'];
+
+    ############################# Ejecucion #############################
+    $sSQL="Update direcccionpacientes Set Estado ='$En' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="Update direcccionpacientes Set Municipio ='$Mu' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="Update direcccionpacientes Set Colonia ='$Co' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="Update direcccionpacientes Set Calle ='$Ca' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="Update direcccionpacientes Set Numero_exterior='$Nu' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="Update direcccionpacientes Set Numero_interior='$Nu' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="Update direcccionpacientes Set C_Postal='$Cp' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     ?>
+      <script>
+        swal("Accion realizada", "Datos actualizados, presiona de nuevo en 'Datos del paciente' para ver los datos", "success");
+        window.setTimeout(function(){
+        $(".alert").fadeTo(2000 ,500).slideUp(500,function(){
+          $(this).remove();
+        });
+      },2300);
+  
+      
+  </script>
+     <?php
+   
+  }
+} 
+elseif(isset($_SESSION['nControl'])){
+  #$NumControl = $_GET['nControl'];
+  #echo $NumControl;
+  #setcookie("nControl", $NumControl);
+  #$_SESSION["nControl"] = $NumControl;
+  #echo $_SESSION["nControl"];
+  $id_direc="";
+  $NumControl = $_SESSION["nControl"];
+
+  $consulta = $conexion->query("SELECT * FROM datosgen_paciente WHERE No_Paciente='$NumControl'");
+
+?>
+
+<head>
+<!--  
+    [chr(48) AL chr(57) == Numeros 0-9]
+    [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+    [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+    [chr(17) == Control]  
+    [chr(32) == Espacio] 
+    [chr(209) == Ñ Mayuscula] 
+    [chr(241) == ñ minuscula] -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="Dat_Pac_Interfaz.css">
+    <div class="aside3">
+      <div id="pointer"></div>
+      <h2 id="TextoAgenda" id="atras1">Datos del paciente</h2>
+    </div>
+
+    <div class="aside2">
+      <?php
+        include '../OpcionesDeExpendientes/Opciones_Datos.php';
+      ?>
+      <style>
+        <?php
+          $css = file_get_contents('../OpcionesDeExpendientes/Opciones_Defecto.css');
+          echo $css;
+        ?>
+      </style>
+    </div>
+
+    <div class="container">
+      <script src="Datos_Del_Paciente.js"></script>
+      <style>
+        #scroll {
+          overflow-y: scroll;
+          overflow-x: hidden;
+        }
+      </style>
+      
+      <?php
+      #include 'Datos_Del_Paciente.php'
+      ?>
+      <!-- DIVISION PARA MANIPULAR EL FORMULARIO-->
+      <div class="containerDat">
+        <header>Información del expediente</header>
+        <?php
+        while ($row = $consulta->fetch_array()) {
+          $id_direc=$row['ID_Direccion'];
+          $foto=$row['Foto'];
+          
+        ?>
+          <form action="" method="POST" enctype="multipart/form-data" id="scroll">
+            <div class="form first">
+              <div class="details personal">
+                <span class="title">Datos personales</span>
+
+
+                <div class="fields">
+                  <div class="input-field">
+                    <label>Nombre(s)</label>
+                    <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                    <input type="text" name="Nombre" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                    placeholder="Ingrese los nombres" required value="<?php echo $row['Nombre'] ?>" />
+                  </div>
+
+
+                  <div class="input-field">
+                    <label>Apellido paterno</label>
+                    <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                    <input type="text" name="Paterno" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                    placeholder="Ingrese el apellido paterno" required value="<?php echo $row['Apellido_Paterno'] ?>" />
+                  </div>
+
+
+                  <div class="input-field">
+                    <label>Apellido materno</label>
+                    <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                    <input type="text" name="Materno" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                    placeholder="Ingrese el apellido materno" required value="<?php echo $row['Apellido_Materno'] ?>" />
+                  </div>
+
+
+                  <div class="input-field">
+                    <label>CURP</label>
+                    <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                    <input type="text" name="Curp" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) ||  
+                                                                          (event.charCode >= 48 && event.charCode <= 57))"
+                    placeholder="Ingrese la CURP" required value="<?php echo $row['CURP'] ?>" />
+                  </div>
+
+                  <div class="input-field">
+                    <label>Fecha de nacimiento</label>
+                    
+                    <input type="date" name="FNacimiento" placeholder="Ingrese la fecha de nacimiento" required value=<?php echo $row['Fecha_Nacimiento'] ?> />
+                  </div>
+
+                  <div class="input-field">
+                    <label>Edad</label>
+                    <input type="number" name="Edad" maxlength="3"
+                    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    placeholder="Ingrese la edad" required value="<?php echo $row['Edad'] ?>" />
+                  </div>
+
+                  <div class="input-field" placeholder="Ingrese el sexo">
+                    <label>Sexo</label>
+                    <select name="Genero">
+                      <option>Hombre</option>
+                      <option>Mujer</option>
+                    </select>
+                    <!--
+                    <input type="text" name="Genero" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122))"
+                    placeholder="Ingrese el sexo" required value="<?php #echo $row['Sexo'] ?>" />
+                     -->
+                  </div>
+
+                  <div class="input-field">
+                    <label>Estado civil</label>
+                    <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                    <input type="text" name="Civil" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                    placeholder="Ingrese el estado civil" required value="<?php echo $row['Estado_Civil'] ?>" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="details ID">
+                <span class="title">Detalles de expediente</span>
+                <div class="fields">
+                  <div class="input-field">
+                    <label>Fólio</label>
+                    <input type="number" name="Folio" placeholder="Ingrese el fólio" required value="<?php echo $row['Folio_Seguro'] ?>" />
+                  </div>
+                  <div class="input-field">
+                    <label>Numero de Control</label>
+                    <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                    <input type="text" name="NumPaciente" placeholder="Ingrese el número de paciente" required value="<?php echo $row['No_Paciente'] ?>" />
+                  </div>
+                  <div class="input-field">
+                    <label>Fecha de alta</label>
+                    <input type="date" name="FAlta" placeholder="Ingrese la fecha de alta" required value=<?php echo $row['Fecha_alta'] ?> />
+                  </div>
+                </div>
+
+                <div class="details ID">
+                  <span class="title">Detalles de identidad</span>
+
+                  <div class="fields">
+                    <div class="input-field">
+                      <label>Ocupación</label>
+                      <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                      <input type="text" name="Ocupacion" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                      placeholder="Ingrese la ocupación" required value="<?php echo $row['Ocupacion'] ?>" />
+                    </div>
+                    <div class="input-field">
+                      <label>Escolaridad</label>
+                      <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                      <input type="text" name="Escola" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                      placeholder="Ingrese la escolaridad" required value="<?php echo $row['Escolaridad'] ?>" />
+                    </div>
+
+                    <div class="input-field">
+                      <label>Religión</label>
+                      <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                      <input type="text" name="Religion" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                      placeholder="Ingrese la religión" required value="<?php echo $row['Religion'] ?>" />
+                    </div>
+
+                    <div class="input-field">
+                      <label>Teléfono</label>
+                      <input type="number" name="Telefono" maxlength="10"
+                      oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      placeholder="Ingrese el número telefónico" required value="<?php echo $row['Telefono'] ?>" />
+                    </div>
+                    <div class="input-field">
+                      <label>Nombre de tutor</label>
+                      <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                      <input type="text" name="Tutor" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                      placeholder="Ingrese el nombre del tutor" required value="<?php echo $row['Nombre_Tutor'] ?>" />
+                    </div>
+                    <div class="input-field">
+                      <label>Número de emergencia</label>
+                      <input type="number" name="NumEmergencia" maxlength="10"
+                      oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      placeholder="Ingrese el número de emergencia" required value="<?php echo $row['No_Emergencia'] ?>" />
+                    </div>
+                    <?php
+                }
+                $consulta2 = $conexion->query("SELECT * FROM direcccionpacientes WHERE ID_Direccion='$id_direc'");
+                while ($row = $consulta2->fetch_array()) {
+                  #echo $row['Municipio'];
+      
+                  ?>
+
+                    <div class="input-field">
+                      <label>Entidad</label>
+                      <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                      <input type="text" name="Entidad" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) || (event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                      placeholder="Ingrese la entidad" required value="<?php echo $row['Estado'] ?> "/>
+                    </div>
+
+                    <div class="input-field">
+                      <label>Municipio</label>
+                      <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                      <input type="text" name="Municipio" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) || (event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                      placeholder="Ingrese el municipio" required value="<?php echo $row['Municipio'] ?>" />
+                    </div>
+                    <div class="input-field">
+                      <label>Código postal</label>
+                      <input type="number" name="CodPostal" maxlength="5"
+                      oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      placeholder="Ingrese el código postal" required value="<?php echo $row['C_Postal'] ?>" />
+                    </div>
+                 
+                  <div class="input-field">
+                    <label>Colonia</label>
+                    <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                    <input type="text" name="Colonia" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                    placeholder="Ingrese la colonia" required value="<?php echo $row['Colonia'] ?>" />
+                  </div>
+                  <div class="input-field">
+                    <label>Calle</label>
+                    <!--  
+                      [chr(48) AL chr(57) == Numeros 0-9]
+                      [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
+                      [chr(97) AL chr(122) == Letras minusculas a-z (sin ñ)]
+                      [chr(17) == Control]  
+                      [chr(32) == Espacio] 
+                      [chr(209) == Ñ Mayuscula] 
+                      [chr(241) == ñ minuscula] -->
+                    <input type="text" name="Calle" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
+                                                                          (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                          (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                          (event.charCode == 241))"
+                    placeholder="Ingrese la calle" required value="<?php echo $row['Calle'] ?> "/>
+                  </div>
+                  <div class="input-field">
+                    <label>Número</label>
+                    <input type="number" name="Numero" placeholder="Ingrese el número" required value="<?php echo $row['Numero_exterior'] ?>" />
+                  </div>
+                <?php 
+              }?>
+              <!-- 
+                  <div class="input-sel_foto">
+                    <label>Subir foto</label>
+
+                    <input type="file" name="image" required />
+                  </div>
+
+                  <div class="input-imagen">
+                    <?php
+                    #echo '<td>' .
+                    #'<img src = "data:image/png;base64,' . base64_encode($foto) . '" width = "500px" height = "200px"/>'
+                    #. '</td>';
+                    ?>
+
+                  </div>
+                  </div>
+                </div>
+                  -->
+                <button class="nextBtn" id="boton" type="submit" name="submit">
+                  <span class="btnText">Guardar</span>
+                  <i class="uil uil-navigator"></i>
+
+                </button>
+          </form>
+      </div>
+    </div>
+    </body>
+    </html>
+  <?php
+  if (isset($_POST['submit'])){
+    ############################# Datos Generales #############################
+    $N = $_POST['Nombre'];
+    $P = $_POST['Paterno'];
+    $M = $_POST['Materno'];
+    $C = $_POST['Curp'];
+    $FN = $_POST['FNacimiento'];
+    $E = $_POST['Edad'];
+    $G = $_POST['Genero'];
+    $Ci = $_POST['Civil'];
+    $F = $_POST['Folio'];
+    $NP = $_POST['NumPaciente'];
+    $FA = $_POST['FAlta'];
+    $O = $_POST['Ocupacion'];
+    $Es = $_POST['Escola'];
+    $R = $_POST['Religion'];
+    $T = $_POST['Telefono'];
+    $Tu = $_POST['Tutor'];
+    $NE = $_POST['NumEmergencia'];
+    #$image = getimagesize($_FILES["image"]["tmp_name"]);
+    #$imgContent = addslashes(file_get_contents($image));
+    #echo $N;
+
+     ############################# Ejecucion #############################
+     $sSQL="Update datosgen_paciente Set Nombre ='$N' Where No_Paciente='$NumControl'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update datosgen_paciente Set Apellido_Paterno ='$P' Where No_Paciente='$NumControl'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update datosgen_paciente Set Apellido_Materno ='$M' Where No_Paciente='$NumControl'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update datosgen_paciente Set CURP ='$C' Where No_Paciente='$NumControl'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update datosgen_paciente Set Fecha_Nacimiento ='$FN' Where No_Paciente='$NumControl'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update datosgen_paciente Set Edad ='$E' Where No_Paciente='$NumControl'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update datosgen_paciente Set Sexo ='$G' Where No_Paciente='$NumControl'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update datosgen_paciente Set Estado_Civil ='$Ci' Where No_Paciente='$NumControl'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update datosgen_paciente Set Folio_Seguro ='$F' Where No_Paciente='$NumControl'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update datosgen_paciente Set No_Paciente ='$NP' Where No_Paciente='$NumControl'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update datosgen_paciente Set Fecha_alta ='$FA' Where No_Paciente='$NumControl'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update datosgen_paciente Set Ocupacion ='$O' Where No_Paciente='$NumControl'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update datosgen_paciente Set Escolaridad ='$Es' Where No_Paciente='$NumControl'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update datosgen_paciente Set Religion='$R' Where No_Paciente='$NumControl'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update datosgen_paciente Set Telefono='$T' Where No_Paciente='$NumControl'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update datosgen_paciente Set Nombre_Tutor='$Tu' Where No_Paciente='$NumControl'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update datosgen_paciente Set No_Emergencia='$NE' Where No_Paciente='$NumControl'";
+     $consulta = $conexion->query($sSQL);
+    ############################# Direcciones #############################
+    $En = $_POST['Entidad'];
+    $Mu = $_POST['Municipio'];
+    $Cp = $_POST['CodPostal'];
+    $Co = $_POST['Colonia'];
+    $Ca = $_POST['Calle'];
+    $Nu = $_POST['Numero'];
+
+    ############################# Ejecucion #############################
+    $sSQL="Update direcccionpacientes Set Estado ='$En' Where ID_Direccion='$id_direc'";
+    $consulta = $conexion->query($sSQL);
+     $sSQL="Update direcccionpacientes Set Municipio ='$Mu' Where ID_Direccion='$id_direc'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update direcccionpacientes Set Colonia ='$Co' Where ID_Direccion='$id_direc'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update direcccionpacientes Set Calle ='$Ca' Where ID_Direccion='$id_direc'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update direcccionpacientes Set Numero_exterior='$Nu' Where ID_Direccion='$id_direc'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update direcccionpacientes Set Numero_interior='$Nu' Where ID_Direccion='$id_direc'";
+     $consulta = $conexion->query($sSQL);
+     $sSQL="Update direcccionpacientes Set C_Postal='$Cp' Where ID_Direccion='$id_direc'";
+     $consulta = $conexion->query($sSQL);
+     ?>
+     <script>
+       swal("Accion realizada", "Datos actualizados, presiona de nuevo en 'Datos del paciente' para ver los datos", "success");
+       window.setTimeout(function(){
+       $(".alert").fadeTo(2000 ,500).slideUp(500,function(){
+         $(this).remove();
+       });
+     },2300);
+ 
+ </script>
+    <?php
+  }
+}
+else {
   header("Location: ../Expediente/Expedientes.php", TRUE, 301);
 }
   ?>
