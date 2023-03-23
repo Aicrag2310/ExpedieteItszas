@@ -18,7 +18,7 @@ $correo = $_POST['correo'];
 /* Valida usuario */
 
 $repetido=0;
-$consulta=$conexion->query("SELECT `ID_User`,`Nombre`, `Apellido1`, `Apellido2`, `Nombre_Usuario`, `Contrasena`, `Correo` FROM `usuarios`");
+$consulta=$conexion->query("SELECT `Nombre`, `Apellido1`, `Apellido2`, `Nombre_Usuario`, `Contrasena`, `Correo` FROM `usuarios`");
 ?>
   <?php
   while ($row=$consulta->fetch_array()) {
@@ -63,6 +63,7 @@ if ($insert) {
   </script> <?php
 
           } else {
+            echo "ALgo";
             echo mysqli_error($conexion);
             ?>
   <script>
