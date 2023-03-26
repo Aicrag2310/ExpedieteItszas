@@ -131,7 +131,7 @@ include '../Conexion_BD/Conexion.php';
               </div>
               <div class="input-field">
               <label>Logo de universidad en donde se egreso</label>
-                <input type="file" id="FotoUni" name="FotoUni" required accept="image/png, .jpeg, .jpg">/>
+                <input type="file" id="FotoUni" name="FotoUni" required accept="image/png, .jpeg, .jpg">
                 <!--<input type="submit" name="submit" value="UPLOAD"/>-->
               </div>
               
