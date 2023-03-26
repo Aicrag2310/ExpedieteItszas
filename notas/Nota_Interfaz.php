@@ -125,7 +125,7 @@ if(isset($_SESSION['nControl']))
       </thead>
       <tbody>
         <?php
-        $consulta=$conexion->query("Select * from `notas_evolucion` T
+        $consulta=$conexion->query("SELECT * from `notas_evolucion` T
         where No_Paciente = '$NumeroDePaciente'");
         
         #include  'Busqueda_Inteligente.php';
@@ -169,26 +169,28 @@ if(isset($_SESSION['nControl']))
             </div>
             <form action="#" id="form" method="post">
               <div class="fields">
-                <input class="CajasText" id="nomb" type="text" name="NombreNOTAS" placeholder="Ingresa nombre de la nota">
+                <input class="CajasText" id="nomb" type="text" name="NombreNOTAS" placeholder="Ingresa nombre de la nota" required >
               </div>
               <div class="fields">
                 <input class="CajasText" id="date" type="date" name="CalendariNOTAS" onkeydown="return false" value='<?php echo $fecha?>'
-                        placeholder="Escribe el tratamiento">  
+                        placeholder="Escribe el tratamiento" required >  
               </div>
               <br>
               <br>
               <br>
               
                 <h3 class="contenido" >Contenido</h3>
-                <textarea class="textArea"  name="AreaText2"></textarea>
+                <textarea class="textArea"  required name="AreaText2"></textarea>
                 <h3 class="Diagnóstico" >Diagnóstico</h3>
-                <textarea class="textArea2"  name="AreaText3"></textarea>
-                  <button id="entrar" class="bubbly-button" name = "GuardarNota">Guardar</button>
-                  <button id="limpiar" class="bubbly-button" name = "LimpiarNota">Limpiar</button> 
+                <textarea class="textArea2"  required name="AreaText3"></textarea>
+                  <button id="entrar" class="bubbly-button"  name = "GuardarNota">Guardar</button>
+                  <button id="limpiar" class="bubbly-button"  name = "LimpiarNota">Limpiar</button> 
             </form>
         </div>
         <label for="btn-modal" class="cerrar-modal"></label>
-      </div>
+     </div>
+
+
 
 
 </html>
@@ -233,19 +235,34 @@ if (isset($_POST['GuardarNota'])){
       $contenido=trim($_POST['AreaText2']);
       $diagnostico=trim($_POST['AreaText3']);
       $nombre_nota = $_POST['NombreNOTAS'];
-      $consulta2="insert into notas_evolucion (No_Paciente,Nombre,Contenido,Fecha,Diagnostico) values ('$NumeroDePaciente','$nombre_nota','$contenido', '$fecha','$diagnostico')";
+
+      // Seleccionando el ultimo numero de registro de la mascota
+      $sqlSelectRegistro = $conexion->query("SELECT MAX(No_Nota) 
+                            FROM notas_evolucion 
+                            where No_Paciente = '$NumeroDePaciente'");
+
+      while($row=$sqlSelectRegistro->fetch_array()) {
+        $NumNota = $row[0];
+      }
+      $NumNota = (int) $NumNota;
+      //Convirtiendo el registro de la mascota en entero
+      $NumNota = $NumNota + 1;
+
+      $consulta2="INSERT into notas_evolucion (No_Nota,No_Paciente,Nombre,Contenido,Fecha,Diagnostico) 
+                  values ('$NumNota','$NumeroDePaciente','$nombre_nota','$contenido', '$fecha','$diagnostico')";
       $consulta3=$conexion->query($consulta2);
       if ($consulta3){
           ?>
           <script>
-          swal("Accion realizada", "Nota agregada", "success");
-          window.setTimeout(function(){
-          $(".alert").fadeTo(2000 ,500).slideUp(500,function(){
-            $(this).remove();
-            
-          })
-          },2300);
-          location.replace('../Notas/Nota_Interfaz.php');
+            Swal.fire({
+          icon: 'success',
+          title: 'Nota agregada',
+          showConfirmButton: false,
+          timer: 1500
+        }).then((result) => {
+          window.location.href = "../Notas/Nota_Interfaz.php";
+        })
+
 
         </script>
           <?php
@@ -253,12 +270,12 @@ if (isset($_POST['GuardarNota'])){
       } else {
         ?>
         <script>
-        swal("Error", "Ocurrió un error", "error");
-        window.setTimeout(function(){
-        $(".alert").fadeTo(2000 ,500).slideUp(500,function(){
-          $(this).remove();
-        });
-      },2300);
+        Swal.fire({
+          icon: 'error',
+          title: 'Ocurrio un Error', 
+          showConfirmButton: false,   
+          timer: 1500
+          })
   </script>
   <?php
       }
@@ -269,12 +286,12 @@ if (isset($_POST['GuardarNota'])){
 
     ?>
     <script>
-      swal("Error", "Llena todos los campos", "error");
-      window.setTimeout(function(){
-      $(".alert").fadeTo(2000 ,500).slideUp(500,function(){
-        $(this).remove();
-      });
-    },2300);
+      Swal.fire({
+          icon: 'error',
+          title: 'Llena todos los campos', 
+          showConfirmButton: false,   
+          timer: 1500
+          })
 </script>
    <?php
   }

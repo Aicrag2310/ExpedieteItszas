@@ -22,6 +22,10 @@ body{
 .body-expanded{
     margin-left: var(--width);
 }
+
+.body-collapsed{
+    margin-left: var(--width-collapsed);
+}
 #main-container{
     color: white;
 }

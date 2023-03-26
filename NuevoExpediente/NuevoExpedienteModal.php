@@ -386,12 +386,16 @@ if (isset($_POST['NuevoExp']) || isset($_POST['NuevoExp_consulta'])) {
                             <div class="input-field">
                                 <label>Apellido paterno</label>
                                 <input type="text" required name="Paterno" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
-                                                                                        (event.charCode >= 97 && event.charCode <= 122))" placeholder="Ingrese el apellido paterno" />
+                                                                                        (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                                        (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                                        (event.charCode == 241))" placeholder="Ingrese el apellido paterno" />
                             </div>
                             <div class="input-field">
                                 <label>Apellido materno</label>
                                 <input type="text" required name="Materno" onkeypress="return ((event.charCode >= 65 && event.charCode <= 90) || 
-                                                                                        (event.charCode >= 97 && event.charCode <= 122))" placeholder="Ingrese el apellido materno" />
+                                                                                        (event.charCode >= 97 && event.charCode <= 122) || 
+                                                                                        (event.charCode == 32) ||(event.charCode == 209) ||
+                                                                                        (event.charCode == 241))" placeholder="Ingrese el apellido materno" />
                             </div>
 
                             <div class="input-field">
@@ -417,9 +421,11 @@ if (isset($_POST['NuevoExp']) || isset($_POST['NuevoExp_consulta'])) {
                         <span class="btnText2">Guardar e ir a consultas</span>
                         <i class="uil uil-navigator"></i>
                     </button>
+                    <!--
                     <div class="DisclaimerText">
                         <h4> Para realizar una consulta es necesario completar los "Datos del Paciente" dentro del expediente!</h4>
                     </div>
+                    -->
                 </div>
         </div>
 

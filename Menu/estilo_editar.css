@@ -229,12 +229,21 @@
     position: absolute;
     left: 72%;
   }
+
+  #limpiar{
+    position: absolute;
+    left:90%;
+    top: 92%;
+    text-align: center;
+    text-decoration: none;
+    padding: .4em .5em;
+}
   
   .bubbly-button {
     position: relative;
     left: 93%;
     width: 100px;
-    height: 40px;
+    height: 30px;
   
     display: inline-block;
     font-size: 1em;

@@ -13,6 +13,9 @@ if (empty ($title)){
     $img_confi="img/configuracion.ico";
     $php_cerrar="php/cerrar_sesion.php";
     $imagensalir="img/salir.ico";
+
+    $consulta_rapida = "../Consulta/Consultas_Interfaz.php";
+    $img_consulta = "../Menu/img/icons8-hospital-96.png"; ###################################
 }
 if ($title=="Configuración"){
     $title="Menu";
@@ -28,11 +31,14 @@ if ($title=="Configuración"){
     $img_confi="img/configuracion.ico";
     $php_cerrar="php/cerrar_sesion.php";
     $imagensalir="img/salir.ico";
+
+    $consulta_rapida = "../Consulta/Consultas_Interfaz.php";
+    $img_consulta = "../Menu/img/icons8-hospital-96.png"; ###################################
 }
 if ($title=="Expediente Clinico ITSZaS"){
     $css="../Menu/css/estilo_menu.css";
     $menu_cabecera="../Menu/menu_cabecera.php";
-    $img1="../Menu/img/Caduceo.png"; ###################################
+    $img1="../Menu/img/Logo_Tec.png"; ###################################
     $agenda="../Agenda/Agenda_Interfaz.php";
     $iconagenda="../Menu/img/A.png";########################
     $registro_paciente="../Expediente/Expedientes.php";
@@ -43,11 +49,14 @@ if ($title=="Expediente Clinico ITSZaS"){
     $php_cerrar="../Menu/php/cerrar_sesion.php";
     $imagensalir="../Menu/img/Salir.png"; ###################################
     $trata = "../Expediente/Datos_Del_Paciente/Dat_Pac_Interfaz.php";
+
+    $consulta_rapida = "../Consulta/Consultas_Interfaz.php";
+    $img_consulta = "../Menu/img/icons8-hospital-96.png"; ###################################
 }
 if ($title=="Registro de paciente"){
     $css="../Menu/css/estilo_menu.css";
     $menu_cabecera="../Menu/menu_cabecera.php";
-    $img1="../Menu/img/Caduceo.png";
+    $img1="../Menu/img/Logo_Tec.png";
     $agenda="../Agenda/Agenda_Interfaz.php";
     $iconagenda="../Menu/img/agenda.ico";
     $registro_paciente="Expedientes.php";
@@ -57,6 +66,9 @@ if ($title=="Registro de paciente"){
     $img_confi="../Menu/img/configuracion.ico";
     $php_cerrar="../Menu/php/cerrar_sesion.php";
     $imagensalir="../Menu/img/salir.ico";
+
+    $consulta_rapida = "../Consulta/Consultas_Interfaz.php";
+    $img_consulta = "../Menu/img/icons8-hospital-96.png"; ###################################
 }
 session_start();
 //validamos si se ha hecho o no el inicio de sesion correctamente
@@ -76,8 +88,8 @@ if (!isset($_SESSION['usuario'])) {
     <link rel="stylesheet" href=<?php echo $css;?>>
 </head>
 
-<body>
-    <div id="sidemenu" class="menu-collapsed">
+<body class = "body-expanded">
+    <div id="sidemenu" class="menu-expanded">
         <!-- HEADER (CABEZERA) -->
         <div id="header">
             <div id="title"><span>Expediente clínico</span></div>
@@ -91,7 +103,8 @@ if (!isset($_SESSION['usuario'])) {
         <!-- PERFIL -->
         <div id="profile">
             <a href="<?php echo $agenda;?>">
-            <div id="photo"><img src=<?php echo $img1;?> alt=""></div>
+                <div id="photo"><img src=<?php echo $img1;?> alt=""></div>
+                <!--<div class="title"> <span>ITSZaS</span></div> -->
             </a>
         </div>
         <!--ITEMS -->
@@ -100,6 +113,13 @@ if (!isset($_SESSION['usuario'])) {
                 <a href="<?php echo $agenda;?>">
                     <div class="icon"> <img src=<?php echo $iconagenda;?> alt=""></div>
                     <div class="title"><span>Agenda</span></div>
+                </a>
+
+            </div>
+            <div class="item">
+                <a href=<?php echo $consulta_rapida;?>>
+                    <div class="icon"> <img src=<?php echo $img_consulta;?> alt=""></div>
+                    <div class="title"><span>Consulta</span></div>
                 </a>
 
             </div>
@@ -133,9 +153,14 @@ if (!isset($_SESSION['usuario'])) {
         const btn = document.querySelector('#menu-btn');
         const menu = document.querySelector('#sidemenu');
         btn.addEventListener('click', e => {
-            menu.classList.toggle("menu-expanded");
+            //menu.classList.toggle("menu-expanded");
+            //menu.classList.toggle("menu-collapsed");
+            //document.querySelector('body').classList.toggle('body-expanded');
+
             menu.classList.toggle("menu-collapsed");
-            document.querySelector('body').classList.toggle('body-expanded');
+            menu.classList.toggle("menu-expanded");
+            document.querySelector('body').classList.toggle('body-collapsed');
+            //document.querySelector('body').classList.toggle('body-expanded');
         })
     </script>
 </body>

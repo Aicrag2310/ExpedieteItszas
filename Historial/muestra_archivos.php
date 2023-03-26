@@ -18,7 +18,7 @@ $consulta=$conexion->query("SELECT * FROM `archivos_expediente` WHERE `No_Pacien
     <div class="input-imagen">
                     <?php
                     echo '<td>' .
-                    '<img src = "data:image/png;base64,' . base64_encode($foto) . '" width = "500px" height = "200px"/>'
+                    '<img src = "data:image/png;base64,' . base64_encode($foto) . '" width = "150px" height = "150px"/>'
                     . '</td>';
                     ?>
     <td>

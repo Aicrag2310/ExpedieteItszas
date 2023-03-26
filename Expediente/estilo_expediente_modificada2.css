@@ -1,10 +1,11 @@
 #limpiar{
   position: absolute;
-  left: 92%;
-  top: 30%;
+  left: 84%;
+  top: 25%;
   text-align: center;
   text-decoration: none;
   padding: .4em .5em;
+  z-index: 1;
 }
 .position-relative{
   position: absolute;
@@ -355,6 +356,7 @@ table.rwd_auto {
 
 .aside2 {
   position: relative;
+  display: inline-block ;
   left: 10%;
   width: 80%;
   height: 10%;
@@ -417,6 +419,7 @@ table.rwd_auto {
 }
 
 #sex {
+  top: -10%;
   position: absolute;
   left: 54%;
 }
@@ -553,45 +556,6 @@ tbody td:hover:before {
     top: -70px;
   }
 
-  #nomb {
-    position: absolute;
-    left: 0%;
-    top: -30px;
-    width: 100px;
-    
-  }
-
-  #pate {
-    
-    position: absolute;
-    left: 0%;
-    top: 10px;
-    width: 100px;
-  }
-
-  #mater {
-    
-    position: absolute;
-    left: 60%;
-    top: -30px;
-    width: 100px;
-  }
-
-  #sex {
-    
-    position: absolute;
-    left: 0%;
-    top: 50px;
-    width: 100px;
-  }
-
-  #date {
-    
-    position: absolute;
-    left: 60%;
-    top: 10px;
-    width: 100px;
-  }
 
   #buton {
     

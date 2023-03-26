@@ -15,7 +15,11 @@ $NumTrata = $_GET["id"];
     #echo $NumTrata;
     if(isset($_SESSION['nControl'])){
     $NumeroDePaciente = $_SESSION['nControl'];
-    $consulta1=$conexion->query("delete from `notas_evolucion` where No_Paciente = '$NumeroDePaciente' and No_Nota = '$NumTrata';");
+    echo "DELETE FROM notas_evolucion WHERE No_Paciente = '$NumeroDePaciente' AND No_Nota = '$NumTrata'";
+    $consulta1=$conexion->query("DELETE FROM notas_evolucion 
+                                  WHERE No_Paciente = '$NumeroDePaciente' 
+                                  AND No_Nota = '$NumTrata';");
+
     
     if ($consulta1){
         $consulta3=$conexion->query($consulta1);

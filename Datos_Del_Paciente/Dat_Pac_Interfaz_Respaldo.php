@@ -458,34 +458,72 @@ if (isset($_POST['nControl'])) {
     $Tu = $_POST['Tutor'];
     $NE = $_POST['NumEmergencia'];
 
+    echo "Primer IF";
+    echo $N;
+    echo $P;
+    echo $M;
+    echo $C;
+    echo $FN;
+    echo $E;
+    echo $G;
+    echo $Ci;
+    echo $F;
+    echo $NSS;
+    echo $NP;
+    echo $FA;
+    echo $O;
+    echo $Car;
+    echo $Es;
+    echo $R;
+    echo $T;
+    echo $Tu;
+    echo $NE;
+
     #$image = $_FILES($_FILES["image"]["tmp_name"]);
     #$imgContent = addslashes(file_get_contents($image));
     #echo $N;
 
      ############################# Ejecucion #############################
-     $sSQL="UPDATE datosgen_paciente 
-            Set Nombre ='$N',
-            Apellido_Paterno ='$P',
-            Apellido_Materno ='$M',
-            CURP ='$C',
-            Edad ='$E',
-            Sexo ='$G',
-            Fecha_Nacimiento ='$FN',
-            Estado_Civil ='$Ci',
-            Folio_Seguro ='$F',
-            Numero_Seguro_Social ='$NSS',
-            No_Paciente ='$NP',
-            Fecha_alta ='$FA',
-            Ocupacion ='$O',
-            Carrera ='$Car',
-            Escolaridad ='$Es',
-            Religion='$R',
-            Telefono='$T',
-            Nombre_Tutor='$Tu',
-            No_Emergencia='$NE'
-            Where No_Paciente='$NumControl'";
-
-    $consultaDatos = $conexion->query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Nombre ='$N' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Apellido_Paterno ='$P' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Apellido_Materno ='$M' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Foto ='$imgContent' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set CURP ='$C' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Fecha_Nacimiento ='$FN' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Edad ='$E' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Sexo ='$G' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Estado_Civil ='$Ci' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Folio_Seguro ='$F' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Numero_Seguro_Social ='$NSS' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set No_Paciente ='$NP' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Fecha_alta ='$FA' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Ocupacion ='$O' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Carrera ='$Car' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Escolaridad ='$Es' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Religion='$R' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Telefono='$T' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Nombre_Tutor='$Tu' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set No_Emergencia='$NE' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
     ############################# Direcciones #############################
     $En = $_POST['Entidad'];
     $Mu = $_POST['Municipio'];
@@ -496,28 +534,33 @@ if (isset($_POST['nControl'])) {
     $Nu = $_POST['Numero'];
 
     ############################# Ejecucion #############################
-    $sSQL2="UPDATE direcccionpacientes 
-            Set Estado ='$En',
-            Municipio ='$Mu',
-            Colonia ='$Co',
-            Calle ='$Ca',
-            Numero_exterior='$Nu',
-            Numero_interior='$Nu',
-            C_Postal='$Cp'
-            Where ID_Direccion='$id_direc'";
-     $consultaDirec = $conexion->query($sSQL2);
-     if ($consultaDirec){
-      ?>
-       <script>
-         swal("Accion realizada", "Datos actualizados, presiona de nuevo en 'Datos del paciente' para ver los datos", "success");
-         window.setTimeout(function(){
-         $(".alert").fadeTo(2000 ,500).slideUp(500,function(){
-           $(this).remove();
-         });
-       },2300);
-   </script>
-      <?php
-      }
+    $sSQL="UPDATE direcccionpacientes Set Estado ='$En' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE direcccionpacientes Set Municipio ='$Mu' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE direcccionpacientes Set Colonia ='$Co' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE direcccionpacientes Set Calle ='$Ca' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE direcccionpacientes Set Numero_exterior='$Nu' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE direcccionpacientes Set Numero_interior='$Nu' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE direcccionpacientes Set C_Postal='$Cp' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     ?>
+      <script>
+        swal("Accion realizada", "Datos actualizados, presiona de nuevo en 'Datos del paciente' para ver los datos", "success");
+        window.setTimeout(function(){
+        $(".alert").fadeTo(2000 ,500).slideUp(500,function(){
+          $(this).remove();
+        });
+      },2300);
+  
+      
+  </script>
+     <?php
+   
   }
 } 
 elseif(isset($_SESSION['nControl'])){
@@ -975,33 +1018,72 @@ elseif(isset($_SESSION['nControl'])){
     $Tu = $_POST['Tutor'];
     $NE = $_POST['NumEmergencia'];
 
+    echo "Segundo IF";
+    echo $N;
+    echo $P;
+    echo $M;
+    echo $C;
+    echo $FN;
+    echo $E;
+    echo $G;
+    echo $Ci;
+    echo $F;
+    echo $NSS;
+    echo $NP;
+    echo $FA;
+    echo $O;
+    echo $Car;
+    echo $Es;
+    echo $R;
+    echo $T;
+    echo $Tu;
+    echo $NE;
+
     #$image = $_FILES($_FILES["image"]["tmp_name"]);
     #$imgContent = addslashes(file_get_contents($image));
     #echo $N;
 
      ############################# Ejecucion #############################
-     $sSQL="UPDATE datosgen_paciente 
-            Set Nombre ='$N',
-            Apellido_Paterno ='$P',
-            Apellido_Materno ='$M',
-            CURP ='$C',
-            Edad ='$E',
-            Sexo ='$G',
-            Fecha_Nacimiento ='$FN',
-            Estado_Civil ='$Ci',
-            Folio_Seguro ='$F',
-            Numero_Seguro_Social ='$NSS',
-            No_Paciente ='$NP',
-            Fecha_alta ='$FA',
-            Ocupacion ='$O',
-            Carrera ='$Car',
-            Escolaridad ='$Es',
-            Religion='$R',
-            Telefono='$T',
-            Nombre_Tutor='$Tu',
-            No_Emergencia='$NE'
-            Where No_Paciente='$NumControl'";
-    $consultaDatos = $conexion->query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Nombre ='$N' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Apellido_Paterno ='$P' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Apellido_Materno ='$M' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Foto ='$imgContent' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set CURP ='$C' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Fecha_Nacimiento ='$FN' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Edad ='$E' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Sexo ='$G' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Estado_Civil ='$Ci' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Folio_Seguro ='$F' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Numero_Seguro_Social ='$NSS' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set No_Paciente ='$NP' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Fecha_alta ='$FA' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Ocupacion ='$O' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Carrera ='$Car' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Escolaridad ='$Es' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Religion='$R' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Telefono='$T' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set Nombre_Tutor='$Tu' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE datosgen_paciente Set No_Emergencia='$NE' Where No_Paciente='$NumControl'";
+     mysql_query($sSQL);
     ############################# Direcciones #############################
     $En = $_POST['Entidad'];
     $Mu = $_POST['Municipio'];
@@ -1012,17 +1094,20 @@ elseif(isset($_SESSION['nControl'])){
     $Nu = $_POST['Numero'];
 
     ############################# Ejecucion #############################
-    $sSQL2="UPDATE direcccionpacientes 
-            Set Estado ='$En',
-            Municipio ='$Mu',
-            Colonia ='$Co',
-            Calle ='$Ca',
-            Numero_exterior='$Nu',
-            Numero_interior='$Nu',
-            C_Postal='$Cp'
-            Where ID_Direccion='$id_direc'";
-     $consultaDirec = $conexion->query($sSQL2);
-     if ($consultaDirec){
+    $sSQL="UPDATE direcccionpacientes Set Estado ='$En' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE direcccionpacientes Set Municipio ='$Mu' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE direcccionpacientes Set Colonia ='$Co' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE direcccionpacientes Set Calle ='$Ca' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE direcccionpacientes Set Numero_exterior='$Nu' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE direcccionpacientes Set Numero_interior='$Nu' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
+     $sSQL="UPDATE direcccionpacientes Set C_Postal='$Cp' Where ID_Direccion='$id_direc'";
+     mysql_query($sSQL);
      ?>
       <script>
         swal("Accion realizada", "Datos actualizados, presiona de nuevo en 'Datos del paciente' para ver los datos", "success");
@@ -1031,9 +1116,10 @@ elseif(isset($_SESSION['nControl'])){
           $(this).remove();
         });
       },2300);
+  
+      
   </script>
      <?php
-     }
    
   }
 }

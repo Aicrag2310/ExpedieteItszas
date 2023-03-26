@@ -83,7 +83,7 @@ if (isset($_SESSION['nControl'])) {
           <div class="col-sm-8">
             <div class="boton-modal">
               <div class="input-sel_foto">
-                <input type="file" id="image" name="image" multiple="">
+                <input type="file" id="image" name="image" multiple="" accept="image/png, .jpeg, .jpg">
                 <label for="image">Subir foto</label>
               </div>
             </div>

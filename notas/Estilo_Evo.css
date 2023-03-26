@@ -68,7 +68,7 @@
 /*:::Ventana Modal:::*/
 #btn-modal{
     display: none;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
 }
 #btn-modal2{
   display: none;
@@ -78,27 +78,19 @@
     width: 100%;
     height: 80%;
     position: relative;
-    top: 100px; left: 10s00px;
+    top: 10%; left: 10%;
     background-color: rgba(144, 148, 150, 0.8);
     display: none;
     justify-content: center;
     align-items: center;
     z-index: 100;
 }
-.containerMOD{
-  width: 100%;
-  height: 80%;
-  position: relative;
-  top: 100px; left: 10s00px;
-  background-color: rgba(144, 148, 150, 0.8);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 100;
-}
+
 #btn-modal:checked ~ .containerMOD{
-    display: flex;  
+    display: flex; 
+
 }
+
 #btn-modal2:checked ~ .containerMOD{
   display: flex;  
 }
@@ -264,6 +256,7 @@
     top: -550px;
     left:0px;
     width: 0px;
+
       
   }
   .boton-modal2{

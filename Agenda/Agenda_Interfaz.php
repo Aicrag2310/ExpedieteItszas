@@ -60,7 +60,7 @@ require '../Menu/menu_cabecera.php';
 
 </div>
 
-<a href="../Consulta/Consultas_Interfaz.php" class="bubbly-button2" id="Consultas" align="center">Nueva consulta</a>
+<!-- <a href="../Consulta/Consultas_Interfaz.php" class="bubbly-button2" id="Consultas" align="center">Nueva consulta</a> -->
 
 <div class="container">
 

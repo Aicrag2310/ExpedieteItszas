@@ -138,13 +138,14 @@ if (isset($_SESSION['nControl'])) {
       </div>
       <form action="#" id="form" method="post">
         <div class="fields">
-          <input class="CajasText" id="nomb" type="text" name="NombreNOTAS" placeholder="Ingresa nombre del tratamiento">
+          <input class="CajasText" id="nomb" type="text" name="NombreNOTAS" placeholder="Ingresa nombre del tratamiento" required >
         </div>
         <div class="fields">
-          <input class="CajasText" id="date" type="date" name="CalendariNOTAS" onkeydown="return false" value='<?php echo $fecha ?>' placeholder="Escribe el tratamiento">
+          <input class="CajasText" id="date" type="date" name="CalendariNOTAS" onkeydown="return false" value='<?php echo $fecha ?>' 
+          placeholder="Escribe el tratamiento" required >
         </div>
 
-        <textarea class="textArea" name="AreaText2"></textarea>
+        <textarea class="textArea" required name="AreaText2"></textarea>
         <button id="entrar" class="bubbly-button" name="GuardarNota">Guardar</button>
         <button id="limpiar" class="bubbly-button" name="LimpiarNota">Limpiar</button>
       </form>
@@ -193,32 +194,47 @@ if (isset($_SESSION['nControl'])) {
     if (strlen($_POST['AreaText2']) >= 1) {
       $contenido = trim($_POST['AreaText2']);
       $nombre_nota = $_POST['NombreNOTAS'];
-      $consulta2 = "insert into tratamientos(No_Paciente,Nombre,Contenido,Fecha) values ('$NumeroDePaciente','$nombre_nota','$contenido', '$fecha')";
+
+      // Seleccionando el ultimo numero de registro de la mascota
+      $sqlSelectRegistro = $conexion->query("SELECT MAX(No_Trata) 
+                            FROM tratamientos
+                            where No_Paciente = '$NumeroDePaciente'");
+
+      while($row=$sqlSelectRegistro->fetch_array()) {
+        $NumNota = $row[0];
+      }
+      $NumNota = (int) $NumNota;
+      //Convirtiendo el registro de la mascota en entero
+      $NumNota = $NumNota + 1;
+
+
+      $consulta2 = "INSERT into tratamientos (No_Trata,No_Paciente,Nombre,Contenido,Fecha) 
+                    values ('$NumNota','$NumeroDePaciente','$nombre_nota','$contenido', '$fecha')";
       $consulta3 = $conexion->query($consulta2);
       if ($consulta3) {
-?>
+      ?>
       <script>
-        swal("Accion realizada", "Nota agregada", "success");
-        window.setTimeout(function() {
-          $(".alert").fadeTo(2000, 500).slideUp(500, function() {
-            $(this).remove();
-
-          })
-        }, 2300);
-        location.replace('../Tratamiento/Tratamiento_Interfaz.php');
+          Swal.fire({
+          icon: 'success',
+          title: 'Tratamiento agregado',
+          showConfirmButton: false,
+          timer: 1500
+        }).then((result) => {
+          window.location.href = "../Tratamiento/Tratamiento_Interfaz.php";
+        })
       </script>
     <?php
 
       } else {
     ?>
       <script>
-        swal("Error", "Ocurrió un error", "error");
-        window.setTimeout(function() {
-          $(".alert").fadeTo(2000, 500).slideUp(500, function() {
-            $(this).remove();
-          });
-        }, 2300);
-      </script>
+        Swal.fire({
+          icon: 'error',
+          title: 'Ocurrio un Error', 
+          showConfirmButton: false,   
+          timer: 1500
+          })
+  </script>
     <?php
       }
     } else {
@@ -226,13 +242,13 @@ if (isset($_SESSION['nControl'])) {
 
     ?>
     <script>
-      swal("Error", "Llena todos los campos", "error");
-      window.setTimeout(function() {
-        $(".alert").fadeTo(2000, 500).slideUp(500, function() {
-          $(this).remove();
-        });
-      }, 2300);
-    </script>
+      Swal.fire({
+          icon: 'error',
+          title: 'Llena todos los campos', 
+          showConfirmButton: false,   
+          timer: 1500
+          })
+</script>
 <?php
     }
   }

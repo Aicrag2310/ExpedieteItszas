@@ -24,8 +24,9 @@ if (isset($_POST['DatosAqui'])) {
     $NumeroDePaciente = $_SESSION['nControl'];
     $_SESSION['nControl'] = $NumeroDePaciente;
 
-    $consulta1 = $conexion->query("Select * from `notas_evolucion`
-                            where No_Paciente = '$NumeroDePaciente' and No_Nota = '$NumTrata';");
+    $consulta1 = $conexion->query("SELECT * from `notas_evolucion`
+                                  where No_Paciente = '$NumeroDePaciente' 
+                                  and No_Nota = '$NumTrata';");
     while ($row = $consulta1->fetch_array()) {
       $NombresTrata = $row[2];
       $ContenidoTrata = $row[3];
@@ -61,15 +62,15 @@ if (isset($_POST['DatosAqui'])) {
       }
       .contenido2{
         position: absolute;
-    left: 30%;
-    top: 20%;
+      left: 30%;
+      top: 15%;
  
     resize: none;
       }
       .diagnóstico2{
         position: absolute;
-    left: 30%;
-    top:70%;
+      left: 30%;
+      top:65%;
  
     resize: none;
       }
@@ -165,14 +166,10 @@ if (isset($_POST['CopiarAqui'])) {
         $longitud= strlen($NombresTrata2);
         $contador = $NombresTrata2[$longitud-1];
         $NombresTrata_copia[$longitud-1]=$contador+1;
-        
-        
-        
       }
     }
-
-
-    $consulta2 = "insert into notas_evolucion (No_Paciente,Nombre,Contenido,Fecha,Diagnostico) values ('$NumeroDePaciente','$NombresTrata_copia','$ContenidoTrata', '$FechaTrata','$contenidodiagnostico')";
+    $consulta2 = "INSERT into notas_evolucion (No_Paciente,Nombre,Contenido,Fecha,Diagnostico) 
+                  values ('$NumeroDePaciente','$NombresTrata_copia','$ContenidoTrata', '$FechaTrata','$contenidodiagnostico')";
     $consulta3 = $conexion->query($consulta2);
     if ($consulta3) {
 ?>

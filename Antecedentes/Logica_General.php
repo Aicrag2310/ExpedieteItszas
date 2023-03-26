@@ -36,7 +36,7 @@ if (isset($_SESSION['nControl'])) {
           Cesareas = '$Cesar',
           Abortos = '$Abor',
           Fecha_Ultimo_Parto = '$FUP'
-          where No_Paciente = $NumControl";
+          where No_Paciente = '$NumControl'";
       $consulta3 = $conexion->query($consulta2);
 
       if ($consulta3) {

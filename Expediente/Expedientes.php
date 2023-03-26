@@ -29,16 +29,20 @@ require '../Menu/menu_cabecera.php';
 <div class="aside2">
 
   <form class="" action="" method="get">
+
     <div class="form first">
       <div class="fields">
         <input class="CajasText" id="nomb" type="text" name="Nombre" placeholder="Nombres">
       </div>
+
       <div class="fields">
         <input class="CajasText" id="pate" type="text" name="Paterno" placeholder="Ap. paterno">
       </div>
+
       <div class="fields">
         <input class="CajasText" id="mater" type="text" name="Materno" placeholder="Ap. materno">
       </div>
+
       <div class="fields">
         <select class="CajasText" id="sex" type="text" name="Sexo">
           <option value="" selected>Selecciona un Sexo</option>
@@ -46,9 +50,11 @@ require '../Menu/menu_cabecera.php';
           <option value="Mujer">Mujer</option>
         </select>
       </div>
+
       <div class="fields">
         <input class="CajasText" id="date" type="text" name="Control" placeholder="No. control">
       </div>
+      
     </div>
 
     <div class="fields">
