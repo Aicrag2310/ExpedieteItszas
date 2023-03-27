@@ -403,8 +403,8 @@ if (isset($_POST['NuevoExp']) || isset($_POST['NuevoExp_consulta'])) {
                             <div class="input-field">
                                 <label>Sexo</label>
                                 <select id="sexo" name="sexo">
-                                    <option value="hombre">Hombre</option>
-                                    <option value="mujer">Mujer</option>
+                                    <option value="Hombre">Hombre</option>
+                                    <option value="Mujer">Mujer</option>
                                 </select>
                             </div>
                             <div class="input-field">
