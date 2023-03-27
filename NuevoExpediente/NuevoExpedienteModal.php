@@ -343,9 +343,11 @@ if (isset($_POST['NuevoExp']) || isset($_POST['NuevoExp_consulta'])) {
         #echo "Error Consulta 1";
     }
     if ($guardar_o_no==1){
-        ob_start();
-        header("Location: www.google.com");
-        ob_end_flush();
+        ?>
+        <script>
+            window.location.href = "../Consulta/Consultas_Interfaz.php";
+        </script>
+        <?php
         exit;
     }
     
