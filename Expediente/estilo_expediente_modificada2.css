@@ -7,6 +7,16 @@
   padding: .4em .5em;
   z-index: 1;
 }
+
+#UnificarExp{
+  position: absolute;
+  left: 75%;
+  top: 25%;
+  text-align: center;
+  text-decoration: none;
+  padding: .4em .5em;
+  z-index: 1;
+}
 .position-relative{
   position: absolute;
   
@@ -238,7 +248,12 @@ select {
   top: 25px;
   left: 0%;
   box-shadow: 0 2px 25px rgba(0, 0, 0, 0.0) !important;
-
+}
+#Unificacion{
+  position: relative;
+  top: 25px;
+  left: 0%;
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.0) !important;
 }
 
 #boton2{

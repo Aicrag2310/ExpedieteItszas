@@ -1,16 +1,23 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <html>
 <?php
 $title = "Expediente Clinico ITSZaS";
 require '../Menu/menu_cabecera.php';
 ?>
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" href="estilo_expediente_modificada2.css">
-<script src="Obtener_Paciente.js"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="../Expediente/js/jquery-3.6.1.min.js"></script>
 <!--DATATABLES-->
 <script src="../Agenda/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="../Agenda/jquery.dataTables.min.css" />
+</head>
+
+
 <style>
   #scroll2 {
     overflow-y: scroll;
@@ -19,9 +26,16 @@ require '../Menu/menu_cabecera.php';
 </style>
 <div>
   <?php
-  include '../NuevoExpediente/NuevoExpedienteModal.php';
+  include '../Expediente_Nuevo/NuevoExpedienteModal.php';
   ?>
 </div>
+
+<div>
+  <?php
+  include '../Expediente_Unifica/Unificar_Expedientes_Modal.php';
+  ?>
+</div>
+
 <div class="aside3">
   <div id="pointer"></div>
   <h2 id="TextoAgenda" id="atras1">Expedientes</h2>
@@ -76,7 +90,7 @@ require '../Menu/menu_cabecera.php';
           <th>Apellido paterno</th>
           <th>Apellido materno</th>
           <th>Sexo</th>
-          <th>Mostrar más...</th>
+          <th>Acciones...</th>
         </tr>
       </thead>
       <tbody>

@@ -154,25 +154,25 @@ function EvaluaIMC()
         var IMC_Calculado = Peso/ ((Talla*Talla));
         //alert(IMC_Calculado)
 
-        if (IMC_Calculado>= 18.5 && IMC_Calculado<= 24.9 )
+        if (IMC_Calculado>= 18.5 && IMC_Calculado< 25 )
         {
             IMC_Estado= IMC_Calculado +", Normal";
             IMC2.value = IMC_Estado;
             IMC2.style.backgroundColor = "lightgreen";
         }
-        else if(IMC_Calculado>= 25 && IMC_Calculado<= 29.9 )
+        else if(IMC_Calculado>= 25 && IMC_Calculado< 30 )
         {
             IMC_Estado=IMC_Calculado + ", Aumentado";
             IMC2.value = IMC_Estado;
             IMC2.style.backgroundColor = "yellow";
         }
-        else if(IMC_Calculado>= 30 && IMC_Calculado<= 34.9 )
+        else if(IMC_Calculado>= 30 && IMC_Calculado< 35 )
         {
             IMC_Estado=IMC_Calculado + ", Moderado";
             IMC2.value = IMC_Estado;
             IMC2.style.backgroundColor = "orange";
         }
-        else if(IMC_Calculado>= 35 && IMC_Calculado<= 39.9 )
+        else if(IMC_Calculado>= 35 && IMC_Calculado< 40 )
         {
             IMC_Estado=IMC_Calculado + ", Severo";
             IMC2.value = IMC_Estado;

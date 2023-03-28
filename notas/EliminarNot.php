@@ -22,7 +22,7 @@ $NumTrata = $_GET["id"];
 
     
     if ($consulta1){
-        $consulta3=$conexion->query($consulta1);
+        #$consulta3=$conexion->query($consulta1);
         #echo "aqui es consulta";
       ?>
       <script>

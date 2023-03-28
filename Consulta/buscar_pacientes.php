@@ -7,18 +7,11 @@
 $sql = "SELECT * FROM datosgen_paciente ";
 $result = mysqli_query($conexion, $sql);
 
-
-
-
 ?>
-
-
-
 
 <select class="tabla" name="campo" id="campo" onchange="ObtenerPaciente();">
   <?php
   while ($row = mysqli_fetch_assoc($result)) {
-
     echo "<option>$row[No_Paciente]</option>";
   }
   ?>

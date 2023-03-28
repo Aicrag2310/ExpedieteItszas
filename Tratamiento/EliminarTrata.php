@@ -14,14 +14,14 @@ include '../Conexion_BD/Conexion.php';
     $NumTrata = $_GET["id"];
     if(isset($_SESSION['nControl'])){
     $NumeroDePaciente = $_SESSION['nControl'];
-    $consulta1=$conexion->query("delete from `tratamientos` where No_Paciente = '$NumeroDePaciente' and No_Trata = '$NumTrata';");
+    $consulta1=$conexion->query("DELETE from `tratamientos` where No_Paciente = '$NumeroDePaciente' and No_Trata = '$NumTrata';");
     
     if ($consulta1){
-        $consulta3=$conexion->query($consulta1);
+        #$consulta3=$conexion->query($consulta1);
         #echo "aqui es consulta";
       ?>
       <script>
-        swal("Accion Realizada", "La nota se ha elimnado con exito", "success");
+        swal("Accion Realizada", "El tratamiento se ha elimnado con exito", "success");
         window.setTimeout(function(){
         $(".alert").fadeTo(2000 ,500).slideUp(500,function(){
           $(this).remove();

@@ -1,4 +1,6 @@
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/actualizar.js"></script>
+<script src="js/jquery-3.6.1.min.js"></script>
 <div>
     <div>
         <h2>Buscar paciente</h2>
@@ -95,6 +97,3 @@
     <p class="broken"></p>
 
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="js/actualizar.js"></script>
-<script src="js/jquery-3.6.1.min.js"></script>

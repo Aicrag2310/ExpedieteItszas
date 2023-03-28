@@ -4,17 +4,10 @@
 $title = "Expediente Clinico ITSZaS";
 #IMPORTAMOS EL MENU LATERAL
 require('../Menu/menu_cabecera.php');
-
-
-
-
 ?>
 <html>
 
-
 <head>
-
-    <head>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="js/jquery-3.6.1.min.js"></script>
         <link rel="stylesheet" href="css/estilos_modal.css">
@@ -22,7 +15,7 @@ require('../Menu/menu_cabecera.php');
         <script src="js/reloj.js"></script>
         <script src="peticiones.js"></script>
 
-    </head>
+</head>
 
     <style>
         #scroll {

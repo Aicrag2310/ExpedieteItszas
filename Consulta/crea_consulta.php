@@ -23,15 +23,21 @@ $var=0;
 
 
 if(isset($_POST["guardaconsulta"])){
+
+    
      //SE OBTIENE EL NUMERO DE CONSULTA
-        $numconsulta="";
-        $no_paciente = $_POST["campo"];
+        #$consulta=$conexion->query("SELECT MAX() FROM consultas;");
+        $sqlSelectRegistro = $conexion->query("SELECT MAX(No_Consulta) 
+        FROM consultas;");
 
-        $consulta=$conexion->query("SELECT MAX(No_Consulta) FROM consultas;");
-        while ($row=$consulta->fetch_array()) {
-        $numconsulta=($row[0]);
+        while($row=$sqlSelectRegistro->fetch_array()) {
+        $NumNota = $row[0];
         }
-
+        $NumNota = (int) $NumNota;
+        //Convirtiendo el registro de la mascota en entero
+        $NumNota = $NumNota + 1;
+        $numconsulta= $NumNota;
+        $no_paciente = $_POST["campo"];
 
 
     //OBTENCION DE SIGNOS VITALES
@@ -45,9 +51,9 @@ if(isset($_POST["guardaconsulta"])){
   //PRIMERO SE CREA LA CONSULTA
 
  $insert = $conexion->query(
-    "INSERT `consultas`(`No_Paciente`, `Hora_inicio`, `Hora_end`, `Motivo_consulta`, 
+    "INSERT `consultas`(`No_Consulta`,`No_Paciente`, `Hora_inicio`, `Hora_end`, `Motivo_consulta`, 
     `Padecimiento`, `Diagnostico`, `Fecha`) 
-    VALUES ('$no_paciente',CURTIME(),CURTIME(),'$motivo','$padecimiento','$diagnostico',CURDATE()) ;");
+    VALUES ('$numconsulta','$no_paciente',CURTIME(),CURTIME(),'$motivo','$padecimiento','$diagnostico',CURDATE()) ;");
  if($insert){
     $var=1;
 
