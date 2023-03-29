@@ -12,7 +12,7 @@ require '../Menu/menu_cabecera.php';
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <!--DATATABLES-->
-<script src="jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="jquery.dataTables.min.css" />
 <style>
   #scroll2 {
@@ -27,44 +27,34 @@ require '../Menu/menu_cabecera.php';
 </div>
 
 <div class="aside2">
-  <form class="" action="" method="get">
+
+
+  <form class="" action="" method="post">
+  <input id="buton" class="bubbly-button" type="submit" name="recargar" value="Recargar">
     <div class="form first">
       <div class="fields">
-        <input class="CajasText" id="cont" type="text" name="No. Control" placeholder="No. control">
+      <label >Fecha de inicio:</label>
+        <input class="CajasText" id="fechaInicio" type="date" name="fechaInicio" placeholder="No. control">
       </div>
       <div class="fields">
-        <input class="CajasText" id="nomb" type="text" name="Nombre" placeholder="Nombres">
+        <label id="lable_fin">Fecha de fin:</label>
+        <input class="CajasText" id="fechaFin" name="fechaFin" type="date">
       </div>
-      <div class="fields">
-        <input class="CajasText" id="pate" type="text" name="Paterno" placeholder="Ap. paterno">
-      </div>
-      <div class="fields">
-        <input class="CajasText" id="mater" type="text" name="Materno" placeholder="Ap. materno">
-      </div>
-      <div class="fields">
-        <select class="CajasText" id="sex" type="text" name="Sexo">
-          <option value="" selected>Sexo</option>
-          <option value="Hombre">Masculino</option>
-          <option value="Mujer">Femenino</option>
-        </select>
-      </div>
-      <div class="fields">
-        <input class="CajasText" id="date" type="date" name="Calendari" placeholder="Sexo" onkeydown="return false">
-      </div>
-    </div>
-
+      
     <div class="fields">
       <input id="buton" class="bubbly-button" type="submit" name="enviar" value="Buscar">
     </div>
+  
+   
   </form>
 
 </div>
 
-<!-- <a href="../Consulta/Consultas_Interfaz.php" class="bubbly-button2" id="Consultas" align="center">Nueva consulta</a> -->
+<a href="../Consulta/Consultas_Interfaz.php" class="bubbly-button2" id="Consultas" align="center">Nueva consulta</a>
 
 <div class="container">
 
-  <table id="tabla">
+  <table id="tabla" style="width=50%">
     <thead>
       <tr>
         <th>CURP</th>
@@ -92,6 +82,8 @@ require '../Menu/menu_cabecera.php';
 <!--Jquery-->
 
 <script>
+
+    
   $(document).ready(function() {
     $("#tabla").DataTable({
       language: {
@@ -116,7 +108,7 @@ require '../Menu/menu_cabecera.php';
           sortDescending: ": active para ordenar la columna en orden descendente",
         },
       },
-      scrollY: 400,
+      scrollY: 600,
       lengthMenu: [
         [5, 10, 25, -1],
         [5, 10, 25, "All"],

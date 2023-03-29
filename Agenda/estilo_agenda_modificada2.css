@@ -1,9 +1,9 @@
 .container {
   position: relative;
-  width: 85%;
+  width: 100%;
   border-radius: 6px;
   padding: 30px;
-  left: 100px;
+  left: -60px;
   margin: 0 15px;
   background-color: rgba(255, 255, 255, 0);
   /*box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);*/
@@ -49,9 +49,9 @@
 
 #Consultas{
   position: absolute;
-  width: 5%;
-  left: 92%;
-  top: 30%;
+  width: 10%;
+  left: 100%;
+  top: 300%;
   text-decoration: none;
   padding: .4em .5em;
 }
@@ -205,32 +205,25 @@ table.rwd_auto {
   -webkit-border-radius: 3px 3px 3px 3px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.37);
 }
-#cont {
+#fechaInicio {
   position: absolute;
+  width: 250px;
   left: 0%;
 }
-#nomb {
+#lable_inicio{
   position: absolute;
-  left: 15%;
+  left: 0%;
+  top: 0%;
 }
-
-#pate {
-  position: absolute;
-  left: 30%;
-}
-
-#mater {
-  position: absolute;
-  left: 45%;
-}
-#sex {
+#lable_fin{
   position: absolute;
   left: 60%;
+  top: 0%;
 }
-
-#date {
+#fechaFin {
   position: absolute;
-  left: 75%;
+  width: 250px;
+  left: 60%;
 }
 
 .bubbly-button {
