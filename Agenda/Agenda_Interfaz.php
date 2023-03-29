@@ -63,8 +63,7 @@ require '../Menu/menu_cabecera.php';
         <th>Nombre</th>
         <th>Apellido paterno</th>
         <th>Apellido materno</th>
-        <th>Hora de inicio</th>
-        <th>Hora de finalización</th>
+        <th>Carrera</th>
         <th>Sexo</th>
         <th>Fecha</th>
 

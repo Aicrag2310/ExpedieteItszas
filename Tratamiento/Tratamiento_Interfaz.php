@@ -5,8 +5,7 @@ $title = "Expediente Clinico ITSZaS";
 include('../Menu/menu_cabecera.php');
 include '../Conexion_BD/Conexion.php';
 if (isset($_SESSION['nControl'])) {
-  #$NumControl = $_GET['nControl'];
-  #echo $NumControl;
+
   #setcookie("nControl", $NumControl);
   #$_SESSION["nControl"] = $NumControl;
   #  echo $_SESSION["nControl"];
@@ -99,6 +98,8 @@ if (isset($_SESSION['nControl'])) {
 
           #include  'Busqueda_Inteligente.php';
           while ($ver = mysqli_fetch_row($consulta)) {
+            
+			      $_SESSION["tratamiento"]=$ver[0];
           ?>
             <tr>
               <td><?php echo $ver[2]; ?></td>
@@ -108,6 +109,9 @@ if (isset($_SESSION['nControl'])) {
                   Abrir...
                   <button type='submit' class="bubbly-button2" value=<?php echo $ver[0] ?> name='CopiarAqui'>
                     Copiar
+                  </button>
+                  <button type='submit' class="bubbly-button2" name='imprimir'>
+                    Imprimir
                   </button>
 
               </td>

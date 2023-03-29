@@ -13,6 +13,7 @@ class usuarios{
 		if(mysqli_num_rows($resultado) > 0){
 			session_start();
 			$_SESSION["usuario"]=$datos[0];
+			
 
 			return 1;
 			Conexion :: cerrar_conexion(); 

@@ -7,6 +7,12 @@ $title = "Expediente Clinico ITSZaS";
 
 include('../Menu/menu_cabecera.php');
 include '../Conexion_BD/Conexion.php';
+if (isset($_POST['imprimir'])) {
+  $usu = $_SESSION['usuario'];
+  $NumeroDePaciente = $_SESSION['nControl'];
+  header("Location: ../Imprimir/index.php?id=$usu&paciente=$NumeroDePaciente");
+  exit;
+}
 if (isset($_POST['DatosAqui'])) {
   $NumTrata = $_POST["DatosAqui"];
   #echo $DatosTrata;

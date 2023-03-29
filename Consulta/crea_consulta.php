@@ -74,7 +74,7 @@ if(isset($_POST["guardaconsulta"])){
     $respiratoria = $_POST["respiratoria"];
     $glucosa = $_POST["Glucosa"];
 
-
+    
     $insert2 = $conexion->query(
     "INSERT INTO `signos_vitales`(`No_Consulta`, `Peso`, `Altura`, `Temperatura`, 
     `IMC`, `TensionSistolica`, `TensionDiastolica`, `FrecuenciaCardiaca`, `FrecuenciaRespiratoria`, `Glucosa`)
@@ -87,7 +87,7 @@ if(isset($_POST["guardaconsulta"])){
  
  //SE INSERTAN LOS SIGNOS VITALES
  
-  if($insert==1){
+  if($insert2==1){
       ?>
       <script>
       Swal.fire({
@@ -109,6 +109,7 @@ if(isset($_POST["guardaconsulta"])){
   }
   else
   {
+    echo mysqli_error($conexion);
      ?>
       <script>
       Swal.fire({
