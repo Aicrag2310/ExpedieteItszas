@@ -12,6 +12,7 @@ if (isset($_POST['Unificacion'])) {
     $NumNota1Conv = (int) $NumNota1;
 
     $Notas1 = $conexion->query("SELECT * FROM notas_evolucion where	No_Paciente = '$NumerodeControl2'");
+    $Notas2 = $conexion->query("DELETE FROM notas_evolucion where No_Paciente = '$NumerodeControl2'");
     while($row=$Notas1->fetch_array()){
         $NumNota1Conv = $NumNota1Conv + 1;
         ##
@@ -42,13 +43,14 @@ if (isset($_POST['Unificacion'])) {
     $NumTrata1Conv = (int) $NumTrata1;
 
     $Tratamientos1 = $conexion->query("SELECT * FROM tratamientos where	No_Paciente = '$NumerodeControl2'");
+    $Tratamientos2 = $conexion->query("DELETE FROM tratamientos where No_Paciente = '$NumerodeControl2'");
     while($row=$Tratamientos1->fetch_array()){
         $NumTrata1Conv = $NumTrata1Conv + 1;
         ##
         $NombreTrata2 = $row[2];
         $ConteTrata2 = $row[3];
         $FechaTrata2 = $row[4];
-        $consulta3="INSERT into notas_evolucion (No_Trata,
+        $consulta3="INSERT into tratamientos (No_Trata,
                                                 No_Paciente,
                                                 Nombre,
                                                 Contenido,
@@ -58,7 +60,7 @@ if (isset($_POST['Unificacion'])) {
                             '$NombreTrata2',
                             '$ConteTrata2', 
                             '$FechaTrata2')";
-        $consulta4=$conexion->query($consulta2);
+        $consulta4=$conexion->query($consulta3);
     }
     
 
@@ -75,9 +77,8 @@ if (isset($_POST['Unificacion'])) {
                                     where No_Paciente = '$NumerodeControl2'");
 
     ################################# ELIMINAR EXPEDIENTE #################################
-    $Notas2 = $conexion->query("DELETE FROM notas_evolucion where No_Paciente = '$NumerodeControl2'");
 
-    $Tratamientos2 = $conexion->query("DELETE FROM tratamientos where No_Paciente = '$NumerodeControl2'");
+
 
     $Antecedentes1 = $conexion->query("DELETE FROM apnp where No_Paciente = '$NumerodeControl2'");
 
@@ -91,9 +92,10 @@ if (isset($_POST['Unificacion'])) {
     while($row = $Direccion2->fetch_array()) {
         $IDDirec2 = $row[0];
     }
-    $Direccion1 = $conexion->query("DELETE FROM direcccionpacientes  where ID_Direccion = '$IDDirec2'");
 
     $Datos1 = $conexion->query("DELETE FROM datosgen_paciente  where No_Paciente = '$NumerodeControl2'");
+
+    $Direccion1 = $conexion->query("DELETE FROM direcccionpacientes  where ID_Direccion = '$IDDirec2'");
 
     
 
