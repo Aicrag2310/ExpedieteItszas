@@ -46,6 +46,12 @@ if(isset($_POST["guardaconsulta"])){
     $padecimiento = $_POST["padecimiento"];
     #echo $padecimiento;
     $diagnostico = $_POST["Diagnostico"];
+
+    //TRATAMIENTO
+    $TratamientoTitulo = $_POST["TratamientoTitulo"];
+    $Tratamientotxt = $_POST["Tratamientotxt"];
+    $fecha = date("Y-m-d");
+
     #echo $diagnostico;
 
   //PRIMERO SE CREA LA CONSULTA
@@ -80,6 +86,11 @@ if(isset($_POST["guardaconsulta"])){
     `IMC`, `TensionSistolica`, `TensionDiastolica`, `FrecuenciaCardiaca`, `FrecuenciaRespiratoria`, `Glucosa`)
      VALUES ('$numconsulta','$peso','$talla','$temperatura','$imc','$sistolica','$diastolica','$cardiaca','$respiratoria','$glucosa')");
     //echo ("Hola");
+    
+    $insert_trta = $conexion->query(
+        "INSERT INTO `tratamientos`( `No_Paciente`, `Nombre`, `Contenido`, `Fecha`)
+         VALUES ('$no_paciente','$TratamientoTitulo','$Tratamientotxt','$fecha')"
+    );
 
     //echo $no_paciente;
 

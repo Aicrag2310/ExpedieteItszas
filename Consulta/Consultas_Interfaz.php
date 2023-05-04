@@ -47,6 +47,13 @@ require('../Menu/menu_cabecera.php');
                         <textarea id="DiagnosticoText" name="Diagnostico" placeholder="Ingrese diagnóstico..." disabled></textarea>
                     </div>
 
+                    <div id="Tratamiento">
+                    <h5>Ingrese título del tratamiento</h5>
+                        <input id="TratamientoTitulo" name="TratamientoTitulo" type="text" placeholder="Ingrese título del tratamiento...">
+                        <h5>Ingrese tratamiento</h5>
+                        <textarea id="Tratamientotxt" name="Tratamientotxt" placeholder="Ingrese tratamiento..." disabled></textarea>
+                    </div>
+
                     <script src="js/peticiones.js"></script>
                     <?php
                     include('crea_consulta.php');
