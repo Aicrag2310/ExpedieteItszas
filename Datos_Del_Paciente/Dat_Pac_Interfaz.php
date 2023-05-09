@@ -1033,7 +1033,7 @@ elseif(isset($_SESSION['nControl'])){
       },2300);
   </script>
      <?php
-     }
+    }
    
   }
 }

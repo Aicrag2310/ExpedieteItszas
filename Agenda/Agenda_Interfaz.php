@@ -44,7 +44,6 @@ require '../Menu/menu_cabecera.php';
     <div class="fields">
       <input id="buton" class="bubbly-button" type="submit" name="enviar" value="Buscar">
     </div>
-  
    
   </form>
 

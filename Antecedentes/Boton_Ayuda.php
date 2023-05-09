@@ -61,7 +61,6 @@
 	transform: translate(-50%,-50%);
 	border-radius: 5px;
 }
- 
 .wrapper .modal_box .modal_box_wrap .modal_close{
 	position: absolute;
 	top: -25px;
