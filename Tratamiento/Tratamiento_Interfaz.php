@@ -123,12 +123,13 @@ if (isset($_SESSION['nControl'])) {
       </table>
     </form>
   </div>
-
+<!--
   <div class="boton-modal">
     <label for="btn-modal">
       Nuevo
     </label>
   </div>
+  -->
   <!--Fin de Boton-->
   <!--Ventana Modal-->
   <input type="checkbox" id="btn-modal">
