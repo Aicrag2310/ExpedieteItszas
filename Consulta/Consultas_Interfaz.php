@@ -48,10 +48,13 @@ require('../Menu/menu_cabecera.php');
                     </div>
 
                     <div id="Tratamiento">
-                    <h5>Ingrese título del tratamiento</h5>
-                        <input id="TratamientoTitulo" name="TratamientoTitulo" type="text" placeholder="Ingrese título del tratamiento...">
-                        <h5>Ingrese tratamiento</h5>
-                        <textarea id="Tratamientotxt" name="Tratamientotxt" placeholder="Ingrese tratamiento..." disabled></textarea>
+                    
+                        <div class="input-field">
+                            <h5>Ingrese título del tratamiento</h5>
+                            <input class= "EstiloBotones" id="TratamientoTitulo" name="TratamientoTitulo" type="text" placeholder="Ingrese título del tratamiento..." disabled>
+                            <h5>Ingrese tratamiento</h5>
+                            <textarea id="Tratamientotxt" name="Tratamientotxt" placeholder="Ingrese tratamiento..." disabled></textarea>
+                        </div>
                     </div>
 
                     <script src="js/peticiones.js"></script>

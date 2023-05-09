@@ -137,8 +137,9 @@
     height: 65%;
     resize: none;
 }
-
-
+#TratamientoTitulo {
+    width: 65%;
+}
 
 #Tratamientotxt{
     position: relative;

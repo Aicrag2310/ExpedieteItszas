@@ -20,6 +20,8 @@ function ObtenerPaciente(){
         $("#cardiaca" ).prop("disabled", true);
         $("#respiratoria" ).prop("disabled", true);
         $("#DiagnosticoText" ).prop("disabled", true);
+
+        $('#TratamientoTitulo').prop("disabled", true);
         $("#Tratamientotxt" ).prop("disabled", true);
 
         
@@ -59,6 +61,8 @@ function ObtenerPaciente(){
         $("#cardiaca" ).prop("disabled", false);
         $("#respiratoria" ).prop("disabled", false);
         $("#DiagnosticoText" ).prop("disabled", false);
+
+        $('#TratamientoTitulo').prop("disabled", false);
         $("#Tratamientotxt" ).prop("disabled", false);
     }
 }
