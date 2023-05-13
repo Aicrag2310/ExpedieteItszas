@@ -33,7 +33,7 @@ require '../Menu/menu_cabecera.php';
   <input id="buton" class="bubbly-button" type="submit" name="recargar" value="Recargar">
     <div class="form first">
       <div class="fields">
-      <label >Fecha de inicio:</label>
+        <label id="lable_inicio">Fecha de inicio:</label>
         <input class="CajasText" id="fechaInicio" type="date" name="fechaInicio" placeholder="No. control">
       </div>
       <div class="fields">
@@ -41,9 +41,10 @@ require '../Menu/menu_cabecera.php';
         <input class="CajasText" id="fechaFin" name="fechaFin" type="date">
       </div>
       
-    <div class="fields">
-      <input id="buton" class="bubbly-button" type="submit" name="enviar" value="Buscar">
-    </div>
+      <div class="fields">
+        <input id="buton" class="bubbly-button" type="submit" name="enviar" value="Buscar">
+      </div>
+      
    
   </form>
 

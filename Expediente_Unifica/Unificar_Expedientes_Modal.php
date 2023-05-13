@@ -305,12 +305,12 @@ if (isset($_POST['NuevoExp']) || isset($_POST['NuevoExp_consulta'])) {
                         <div class="fields">
                             <div class="input-field">
                                 <h2 class= "TextBusqueda">Expediente Principal (1)</h2>
-                                <label for="Control1">Numero de control:</label>
+                                <label for="Control1">Número de control:</label>
                                 <?php include 'Buscar_Expediente1.php';?>
                             </div>
                             <div class="input-field">
                                 <h2 class= "TextBusqueda">Expediente Erroneo (2)</h2>
-                                <label for="Control2">Numero de control:</label>
+                                <label for="Control2">Número de control:</label>
                                 <?php include 'Buscar_Expediente2.php';?>
                             </div>
                         </div>

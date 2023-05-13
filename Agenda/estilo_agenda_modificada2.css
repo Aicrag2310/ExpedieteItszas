@@ -210,6 +210,11 @@ table.rwd_auto {
   width: 250px;
   left: 0%;
 }
+#fechaFin {
+  position: absolute;
+  width: 250px;
+  left: 60%;
+}
 #lable_inicio{
   position: absolute;
   left: 0%;
@@ -220,11 +225,7 @@ table.rwd_auto {
   left: 60%;
   top: 0%;
 }
-#fechaFin {
-  position: absolute;
-  width: 250px;
-  left: 60%;
-}
+
 
 .bubbly-button {
   position: relative;
@@ -454,6 +455,7 @@ tbody td:hover:before {
     left: 100px;
     top: 35px;
   }
+  
 
   .container form {
     overflow-y: scroll;
