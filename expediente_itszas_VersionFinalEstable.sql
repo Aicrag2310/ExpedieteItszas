@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 02-06-2023 a las 00:22:58
--- Versión del servidor: 10.5.19-MariaDB-cll-lve
--- Versión de PHP: 7.2.34
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 02-06-2023 a las 07:39:06
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,11 +18,11 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `u283658544_Exp_itszas`
+-- Base de datos: `expediente_itszas`
 --
 
 -- --------------------------------------------------------
-use expediente_itszas;
+
 --
 -- Estructura de tabla para la tabla `apnp`
 --
@@ -38,19 +38,6 @@ CREATE TABLE `apnp` (
   `Observaciones` longtext DEFAULT NULL,
   `Vivienda_Rural` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `apnp`
---
-
-INSERT INTO `apnp` (`No_Paciente`, `Lugar_Nacimiento`, `Duchas_semana`, `Lugar_Residencia`, `Viajes_extranjero`, `Trabajo`, `Deportes`, `Observaciones`, `Vivienda_Rural`) VALUES
-('Z04020084', '', 0, '', '', '', '', '', ''),
-('001', '', 0, '', '', '', '', '', ''),
-('4567767', '', 0, '', '', '', '', '', ''),
-('003', '', 0, '', '', '', '', '', ''),
-('008 ', '', 0, '', ' ', '', ' ', '', ''),
-('0010', '', 0, '', '', '', '', '', ''),
-('000100', '', 0, '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -80,21 +67,6 @@ CREATE TABLE `consultas` (
   `Diagnostico` longtext DEFAULT NULL,
   `Fecha` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `consultas`
---
-
-INSERT INTO `consultas` (`No_Consulta`, `No_Paciente`, `Hora_inicio`, `Hora_end`, `Motivo_consulta`, `Padecimiento`, `Diagnostico`, `Fecha`) VALUES
-(1, 'Z04020084', '20:04:01.000000', '20:04:01.000000', 'dolor de cabeza', 'gripa', 'solo trae una gripa no hay problem', '2023-05-17'),
-(2, 'Z04020084', '20:04:14.000000', '20:04:14.000000', 'dolor de cabeza', 'gripa', 'solo trae una gripa no hay problem', '2023-05-17'),
-(3, 'Z04020084', '14:57:30.000000', '14:57:30.000000', 'a', 'a', 'a', '2023-05-18'),
-(4, 'Z04020084', '19:58:56.000000', '19:58:56.000000', '', '', 'tiene gripa', '2023-05-24'),
-(5, 'Z04020084', '17:32:28.000000', '17:32:28.000000', 'ddsf', 'dfddf', 'dygt', '2023-05-30'),
-(6, '008', '18:20:51.000000', '18:20:51.000000', 'cefalea', ' faringe hiperemica , cae permeables , CAP NORMAL ', 'FARINGITIS', '2023-05-31'),
-(7, '0010', '18:30:53.000000', '18:30:53.000000', 'MOCOS \r\nTOS ', ' DESCARGA ANTERIOR HIALINA    EN AMBAS FOSAS NASALES', 'RINITIS ALERGICA ', '2023-05-31'),
-(8, '000100', '18:37:20.000000', '18:37:20.000000', 'DIARREA ', ' ABDOMEN ASINTOMATICO', 'GASTROENTERITIS ', '2023-05-31'),
-(9, '000100', '18:41:46.000000', '18:41:46.000000', '', '', '', '2023-05-31');
 
 -- --------------------------------------------------------
 
@@ -127,19 +99,6 @@ CREATE TABLE `datosgen_paciente` (
   `Nombre_Tutor` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `datosgen_paciente`
---
-
-INSERT INTO `datosgen_paciente` (`No_Paciente`, `ID_Direccion`, `Nombre`, `Apellido_Paterno`, `Apellido_Materno`, `Foto`, `CURP`, `Fecha_alta`, `Folio_Seguro`, `Numero_Seguro_Social`, `Sexo`, `Fecha_Nacimiento`, `Edad`, `Entidad_Nacimiento`, `Estado_Civil`, `Escolaridad`, `Ocupacion`, `Carrera`, `Religion`, `Telefono`, `No_Emergencia`, `Nombre_Tutor`) VALUES
-('000100', 10, 'PEDRO', 'GOMEZ ', 'R', NULL, NULL, NULL, NULL, NULL, 'Hombre', '2004-01-01', 19, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('001', 2, 'RICARDO', 'LOPEZ', 'LOPEZ', NULL, NULL, NULL, NULL, NULL, 'Hombre', '2023-05-01', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('0010', 9, 'MARIO', 'GLEZ', 'U', NULL, NULL, NULL, NULL, NULL, 'Hombre', '2002-07-22', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('003', 7, 'jorge', 'solis', 'x', NULL, NULL, NULL, NULL, NULL, 'Hombre', '2003-03-23', 20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('008 ', 8, 'rocio', 'huerta', 'y', NULL, NULL, NULL, NULL, NULL, 'Mujer', '2004-05-10', 19, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('4567767', 5, 'jhjj', 'ghjgh', 'ghjgh', NULL, NULL, NULL, NULL, NULL, 'Hombre', '1986-05-05', 37, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Z04020084', 1, 'Flavio', 'Lamas', 'Salas', NULL, NULL, NULL, NULL, NULL, 'Hombre', '2023-05-12', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -157,22 +116,6 @@ CREATE TABLE `direcccionpacientes` (
   `C_Postal` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `direcccionpacientes`
---
-
-INSERT INTO `direcccionpacientes` (`ID_Direccion`, `Estado`, `Municipio`, `Colonia`, `Calle`, `Numero_exterior`, `Numero_interior`, `C_Postal`) VALUES
-(1, '', '', '', '', 0, 0, 0),
-(2, '', '', '', '', 0, 0, 0),
-(3, '', '', '', '', 0, 0, 0),
-(4, '', '', '', '', 0, 0, 0),
-(5, '', '', '', '', 0, 0, 0),
-(6, '', '', '', '', 0, 0, 0),
-(7, '', '', '', '', 0, 0, 0),
-(8, '', '', '', '', 0, 0, 0),
-(9, '', '', '', '', 0, 0, 0),
-(10, '', '', '', '', 0, 0, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -183,13 +126,27 @@ CREATE TABLE `frecuencia_cardiaca` (
   `Id_Frecuencia` int(11) NOT NULL,
   `Max_edad` int(11) DEFAULT NULL,
   `Min_Edad` int(11) DEFAULT NULL,
-  `Genero` varchar(50) DEFAULT NULL,
+  `Genero` varchar(6) DEFAULT NULL,
   `Inadecuado` int(11) DEFAULT NULL,
   `Normal_MIN` int(11) DEFAULT NULL,
   `Normal_MAX` int(11) DEFAULT NULL,
   `Bueno_MIN` int(11) DEFAULT NULL,
   `Bueno_MAX` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `frecuencia_cardiaca`
+--
+
+INSERT INTO `frecuencia_cardiaca` (`Id_Frecuencia`, `Max_edad`, `Min_Edad`, `Genero`, `Inadecuado`, `Normal_MIN`, `Normal_MAX`, `Bueno_MIN`, `Bueno_MAX`) VALUES
+(1, 29, 20, 'Hombre', 86, 70, 84, 62, 68),
+(2, 39, 30, 'Hombre', 86, 72, 84, 64, 70),
+(3, 49, 40, 'Hombre', 90, 74, 88, 66, 72),
+(4, 100, 50, 'Hombre', 90, 76, 88, 68, 74),
+(5, 29, 20, 'Mujer', 96, 78, 94, 72, 76),
+(6, 39, 30, 'Mujer', 98, 80, 96, 72, 78),
+(7, 49, 40, 'Mujer', 100, 80, 98, 74, 78),
+(8, 100, 50, 'Mujer', 104, 84, 103, 76, 83);
 
 -- --------------------------------------------------------
 
@@ -211,19 +168,6 @@ CREATE TABLE `ginecobstetrico` (
   `Abortos` varchar(20) DEFAULT NULL,
   `Fecha_Ultimo_Parto` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `ginecobstetrico`
---
-
-INSERT INTO `ginecobstetrico` (`No_Paciente`, `Fecha_Ultima_menstruacion`, `Ciclo`, `Edad_Inicio_Menstruacion`, `Edad_Promedio_Inicio_Sexo`, `Num_Parejas`, `Menopausia`, `Embarazos`, `Partos`, `Cesareas`, `Abortos`, `Fecha_Ultimo_Parto`) VALUES
-('Z04020084', '0000-00-00', '', 0, 0, 0, '', '', '', '', '', '0000-00-00'),
-('001', '0000-00-00', '', 0, 0, 0, '', '', '', '', '', '0000-00-00'),
-('4567767', '0000-00-00', '', 0, 0, 0, '', '', '', '', '', '0000-00-00'),
-('003', '0000-00-00', '', 0, 0, 0, '', '', '', '', '', '0000-00-00'),
-('008 ', '0000-00-00', '', 0, 0, 0, '', '', '', '', '', '0000-00-00'),
-('0010', '0000-00-00', '', 0, 0, 0, '', '', '', '', '', '0000-00-00'),
-('000100', '0000-00-00', '', 0, 0, 0, '', '', '', '', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -248,19 +192,6 @@ CREATE TABLE `heredofamiliares` (
   `Texto_Ginecologicos` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `heredofamiliares`
---
-
-INSERT INTO `heredofamiliares` (`No_Paciente`, `Texto_Cardio`, `Texto_TrastornosPsi`, `Texto_EnfermedadesRes`, `Texto_Hepatopatias`, `Texto_Alergias`, `Texto_EnfermedadesEndo`, `Texto_EnfermedadesGen`, `Texto_EnfermedadesNeuro`, `Texto_Derma`, `Texto_Articulaciones_Huesos`, `Texto_Renales`, `Texto_Gastrointestinales`, `Texto_Ginecologicos`) VALUES
-('Z04020084', 'Hola', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL),
-('001', 'Hola', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL),
-('4567767', 'Hola', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL),
-('003', 'Hola', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL),
-('008 ', 'NEGADAS', ' NEGADAS', ' NEGADAS', ' NEGADAS', ' POLVO ', ' NEGADAS', ' NEGADAS', ' NEGADA S', ' NEGADAS ', ' NEGADA S', ' NEGADAS ', ' NEGADAS ', ' NEGADAS'),
-('0010', 'Hola', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL),
-('000100', 'Hola', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -271,10 +202,30 @@ CREATE TABLE `informacion_diastolica` (
   `Id_Diastolica` int(11) NOT NULL,
   `Max_edad` int(11) DEFAULT NULL,
   `Min_Edad` int(11) DEFAULT NULL,
-  `Genero` varchar(50) DEFAULT NULL,
+  `Genero` varchar(6) DEFAULT NULL,
   `MAX_Diastolica` int(11) DEFAULT NULL,
   `MIN_Diastolica` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `informacion_diastolica`
+--
+
+INSERT INTO `informacion_diastolica` (`Id_Diastolica`, `Max_edad`, `Min_Edad`, `Genero`, `MAX_Diastolica`, `MIN_Diastolica`) VALUES
+(1, 18, 16, 'Hombre', 86, 60),
+(2, 24, 19, 'Hombre', 88, 62),
+(3, 29, 25, 'Hombre', 89, 65),
+(4, 39, 30, 'Hombre', 92, 68),
+(5, 49, 40, 'Hombre', 96, 70),
+(6, 59, 50, 'Hombre', 98, 70),
+(7, 100, 60, 'Hombre', 100, 70),
+(8, 18, 16, 'Mujer', 85, 60),
+(9, 24, 19, 'Mujer', 85, 60),
+(10, 29, 25, 'Mujer', 86, 60),
+(11, 39, 30, 'Mujer', 92, 68),
+(12, 49, 40, 'Mujer', 96, 65),
+(13, 59, 50, 'Mujer', 98, 70),
+(14, 100, 60, 'Mujer', 100, 70);
 
 -- --------------------------------------------------------
 
@@ -286,10 +237,30 @@ CREATE TABLE `informacion_sistolica` (
   `Id_Sistolica` int(11) NOT NULL,
   `Max_edad` int(11) DEFAULT NULL,
   `Min_Edad` int(11) DEFAULT NULL,
-  `Genero` varchar(50) DEFAULT NULL,
+  `Genero` varchar(6) DEFAULT NULL,
   `MAX_Sistolica` int(11) DEFAULT NULL,
   `MIN_Sistolica` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `informacion_sistolica`
+--
+
+INSERT INTO `informacion_sistolica` (`Id_Sistolica`, `Max_edad`, `Min_Edad`, `Genero`, `MAX_Sistolica`, `MIN_Sistolica`) VALUES
+(1, 18, 16, 'Hombre', 135, 105),
+(2, 24, 19, 'Hombre', 139, 105),
+(3, 29, 25, 'Hombre', 139, 108),
+(4, 39, 30, 'Hombre', 145, 110),
+(5, 49, 40, 'Hombre', 150, 105),
+(6, 59, 50, 'Hombre', 155, 115),
+(7, 60, 100, 'Hombre', 160, 115),
+(8, 18, 16, 'Mujer', 130, 100),
+(9, 24, 19, 'Mujer', 139, 100),
+(10, 29, 25, 'Mujer', 135, 102),
+(11, 39, 30, 'Mujer', 139, 105),
+(12, 49, 40, 'Mujer', 150, 105),
+(13, 59, 50, 'Mujer', 110, 155),
+(14, 100, 60, 'Mujer', 160, 115);
 
 -- --------------------------------------------------------
 
@@ -305,13 +276,6 @@ CREATE TABLE `notas_evolucion` (
   `Fecha` date DEFAULT NULL,
   `Diagnostico` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `notas_evolucion`
---
-
-INSERT INTO `notas_evolucion` (`No_Nota`, `No_Paciente`, `Nombre`, `Contenido`, `Fecha`, `Diagnostico`) VALUES
-(1, 'Z04020084', 'nota  de ricardo', 'a', '2023-05-18', 'a');
 
 -- --------------------------------------------------------
 
@@ -330,19 +294,6 @@ CREATE TABLE `personales_patologicos` (
   `Fracturas` varchar(50) DEFAULT NULL,
   `Otra_enfermedad` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `personales_patologicos`
---
-
-INSERT INTO `personales_patologicos` (`No_Paciente`, `Enf_Infancia`, `Quirurgicos`, `Traumatismo`, `Secuelas`, `Transfucionoes`, `Hospitalizaciones`, `Fracturas`, `Otra_enfermedad`) VALUES
-('Z04020084', 'Hola', '', '', '', '', '', '', ''),
-('001', 'Hola', '', '', '', '', '', '', ''),
-('4567767', 'Hola', '', '', '', '', '', '', ''),
-('003', 'Hola', '', '', '', '', '', '', ''),
-('008 ', 'NEGADAS ', 'APENDICECTOMIA', 'NEGADAS', 'NEGADAS', 'NEGADAS', '2018', 'NEGADAS', 'NEG'),
-('0010', 'Hola', '', '', '', '', '', '', ''),
-('000100', 'Hola', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -364,21 +315,6 @@ CREATE TABLE `signos_vitales` (
   `Glucosa` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `signos_vitales`
---
-
-INSERT INTO `signos_vitales` (`No_Consulta`, `No_SignosVitales`, `Peso`, `Altura`, `Temperatura`, `IMC`, `TensionSistolica`, `TensionDiastolica`, `FrecuenciaCardiaca`, `FrecuenciaRespiratoria`, `Glucosa`) VALUES
-(1, 1, 64, 7, 36, 13061.224489796, 8, 7, 96, 107, 16),
-(2, 2, 64, 7, 36, 13061.224489796, 8, 7, 96, 107, 16),
-(3, 3, 123, 12, 123, 8541.6666666667, 123, 123, 123, 123, 123),
-(4, 4, 62, 168, 37, 21.967120181406, 2, 323, 190, 19, 42),
-(5, 5, 62, 163, 36, 23.335466144755, 11, 454, 11, 11, 12),
-(6, 6, 68, 162, 38, 25.910684346898, 120, 80, 106, 24, 102),
-(7, 7, 80, 165, 36, 29.384756657484, 110, 70, 86, 20, 98),
-(8, 8, 78, 172, 36, 26.365603028664, 110, 70, 69, 20, 98),
-(9, 9, 78, 168, 36, 27.636054421769, 110, 71, 20, 18, 102);
-
 -- --------------------------------------------------------
 
 --
@@ -392,19 +328,6 @@ CREATE TABLE `tratamientos` (
   `Contenido` longtext DEFAULT NULL,
   `Fecha` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `tratamientos`
---
-
-INSERT INTO `tratamientos` (`No_Trata`, `No_Paciente`, `Nombre`, `Contenido`, `Fecha`) VALUES
-(1, 'Z04020084', '1', 'a', '2023-05-18'),
-(2, 'Z04020084', 'tratamiento 1', 'tomese un té', '2023-05-24'),
-(3, 'Z04020084', 'fdgff', 'ghghg', '2023-05-30'),
-(4, '008', 'IVRS', 'IBUPROFENO 800 MH 1 TAB CADA 8 HRS ', '2023-05-31'),
-(5, '0010', 'RINITIS ', ' LORATADINA 10 MG \r\n TOMAR1 TAB CADA 1 2HRS POR 10 DIAS', '2023-05-31'),
-(6, '000100', 'GE', 'BIOMESINA COMPUESTA TAB \r\n TOMAR  1 TAB CADA 8 HRS POR 5 DIAS', '2023-05-31'),
-(7, '000100', '', 'PARACETAMOL', '2023-05-31');
 
 -- --------------------------------------------------------
 
@@ -472,6 +395,12 @@ ALTER TABLE `direcccionpacientes`
   ADD PRIMARY KEY (`ID_Direccion`);
 
 --
+-- Indices de la tabla `frecuencia_cardiaca`
+--
+ALTER TABLE `frecuencia_cardiaca`
+  ADD PRIMARY KEY (`Id_Frecuencia`);
+
+--
 -- Indices de la tabla `ginecobstetrico`
 --
 ALTER TABLE `ginecobstetrico`
@@ -482,6 +411,18 @@ ALTER TABLE `ginecobstetrico`
 --
 ALTER TABLE `heredofamiliares`
   ADD KEY `Fk_Heredo_NoControl` (`No_Paciente`);
+
+--
+-- Indices de la tabla `informacion_diastolica`
+--
+ALTER TABLE `informacion_diastolica`
+  ADD PRIMARY KEY (`Id_Diastolica`);
+
+--
+-- Indices de la tabla `informacion_sistolica`
+--
+ALTER TABLE `informacion_sistolica`
+  ADD PRIMARY KEY (`Id_Sistolica`);
 
 --
 -- Indices de la tabla `notas_evolucion`
@@ -532,16 +473,34 @@ ALTER TABLE `consultas`
   MODIFY `No_Consulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT de la tabla `frecuencia_cardiaca`
+--
+ALTER TABLE `frecuencia_cardiaca`
+  MODIFY `Id_Frecuencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `informacion_diastolica`
+--
+ALTER TABLE `informacion_diastolica`
+  MODIFY `Id_Diastolica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT de la tabla `informacion_sistolica`
+--
+ALTER TABLE `informacion_sistolica`
+  MODIFY `Id_Sistolica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT de la tabla `signos_vitales`
 --
 ALTER TABLE `signos_vitales`
-  MODIFY `No_SignosVitales` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `No_SignosVitales` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `tratamientos`
 --
 ALTER TABLE `tratamientos`
-  MODIFY `No_Trata` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `No_Trata` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
