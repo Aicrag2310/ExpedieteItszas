@@ -136,7 +136,7 @@ $consulta=$conexion->query("SELECT `ID_User`,
     
           </button>
 
-            <a href="../Menu/Configuracion.php" class="bubbly-button" id="limpiar" align="center">Regresar</a>
+            <a href="../Menu/configuracion.php" class="bubbly-button" id="limpiar" align="center">Regresar</a>
 
           </div>
           

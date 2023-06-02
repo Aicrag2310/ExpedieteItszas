@@ -36,12 +36,12 @@ while ($row=$consulta3->fetch_array()) {
 $logo = 'logo.jpg';
 $celular = '3312890130';
 $fecha = date('d/m/Y');
-$peso = "50 kg";
-$Talla = "125 cm";
-$IMC = "72";
-$Edad = "22";
-$FC = "313";
-$FR = "123";
+$peso = "";
+$Talla = "";
+$IMC = "";
+$Edad = "";
+$FC = "";
+$FR = "";
 
 $pdf = new FPDF('L', 'mm', array(250,180));
 
@@ -59,7 +59,7 @@ $pdf->Cell($width, 10,$nombre, 1, 1, 'C', false, '', 1, '', 'LRTB');
 
 
 
-$pdf->Image('logo.jpg',5,3,30);
+
 $pdf->Image('logo.jpg',210,3,30);
 $pdf->SetFont('Arial','',12);
 $pos_y = $pdf->GetY();
@@ -193,6 +193,6 @@ $pdf->SetXY(30, $pos_y-4);
 $pdf->Cell(0, 10, 'Direccion', 0, 1); // Agregar los guiones bajos
 
 
-$pdf->Output();
+$pdf->Output('archivo.pdf', 'D');
 
 

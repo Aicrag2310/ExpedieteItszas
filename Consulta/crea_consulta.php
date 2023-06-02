@@ -67,10 +67,9 @@ if(isset($_POST["guardaconsulta"])){
     $talla = $_POST["Talla"];
     $temperatura = $_POST["Temperatura"];
 
-    if (($peso != "" or $peso != " ") and ($talla != "" or $talla != " ")){
-        $imc = (($peso)/ (($talla*$talla)))*10000;
-    }
-    else{
+    if ($peso != "" && $talla != ""){
+        $imc = $peso / ($talla * $talla) * 10000;
+    } else {
         $imc = 0;
     }
 

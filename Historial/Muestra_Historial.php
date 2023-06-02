@@ -24,9 +24,10 @@ $consulta=$conexion->query("SELECT
     <tr>
     <td><?php echo $row['No_Consulta']; ?>
    
-    <td><?php echo $row['Hora_inicio']; ?>
-    
-    <td><?php echo $row['Hora_end']; ?>
+    <td><?php echo substr($row['Hora_inicio'], 0, 5); ?></td>
+
+    <td><?php echo substr($row['Hora_end'], 0, 5); ?></td>
+
     
     <td><?php echo $row['Fecha']; ?>
  

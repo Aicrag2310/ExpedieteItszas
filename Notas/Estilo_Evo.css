@@ -1,0 +1,318 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*:::Boton-Modal:::*/
+.boton-modal{
+  position: absolute;
+  bottom: 70%;
+  left: 92%;
+  width: 0px;
+    
+}
+.boton-modal2{
+  position: absolute;
+  bottom: 0%;
+  left: 40%;
+  width: 0px;
+}
+#entrar{
+  position: absolute;
+    left: 88%;
+    top: 12%;  
+    text-align: center;
+    text-decoration: none;
+    padding: .4em .5em;
+     
+}
+#limpiar{
+    position: absolute;
+    left: 88%;
+    top: 22%;
+    text-align: center;
+    text-decoration: none;
+    padding: .4em .5em;
+   
+}
+.boton-modal label{
+    position: absolute;
+   
+    padding: 10px 15px;
+    background-color: #007261;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+.boton-modal2 label{
+  position: relative;
+  padding: 5px 15px;
+  background-color: #007261;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+.boton-modal label:hover{
+    background-color: #00ff51;
+    color: black;
+}
+.boton-modal2 label:hover{
+  background-color: #00ff51;
+  color: black;
+}
+/*:::Fin Boton-Modal:::*/
+
+/*:::Ventana Modal:::*/
+#btn-modal{
+    display: none;
+    background-color: rgb(0, 0, 0);
+}
+#btn-modal2{
+  display: none;
+  background-color: black;
+}
+.containerMOD{
+    width: 100%;
+    height: 80%;
+    position: relative;
+    top: 10%; left: 10%;
+    background-color: rgba(144, 148, 150, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+#btn-modal:checked ~ .containerMOD{
+    display: flex; 
+
+}
+
+#btn-modal2:checked ~ .containerMOD{
+  display: flex;  
+}
+.content-modal{
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    background-color: #a4d7d7;
+    border-radius: 12px;
+    
+}
+.content-modal h2{
+    margin-bottom: 15px;
+}
+.content-modal p{
+    padding: 15px 0px;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+}
+.content-modal .btn-cerrar{
+    width: 300%;
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+.content-modal .btn-cerrar label{
+    padding: 1000px 1000px;
+    background-color: #5488a3;
+    color: #fff;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+.content-modal .btn-cerrar label:hover{
+    background-color:#185e8300;
+}
+.cerrar-modal{
+    width:100%;
+    height: 100vh;
+    position: absolute;
+    top:0; left: 0;
+    z-index: -1;
+}
+.cerrar-modal2{
+  width:100%;
+  height: 100vh;
+  position: absolute;
+  top:0; left: 0;
+  z-index: -1;
+}
+@media screen and (max-width:800px) {
+    .content-modal{
+        width: 90%;
+    }
+}
+/*:::Fin Ventana Modal:::*/
+.containerMOD{
+    position: fixed;
+    max-width: 90%;
+    width: 100%;
+    height: 90%;
+    border-radius: 6px;
+    padding: 30px;
+    left: 5%;
+    top: 5%;
+    margin: 0 15px;
+    background-color:#007261;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.494);
+  }
+  
+  .containerMOD header {
+    position: relative;
+    top: 90px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  
+  .containerMOD header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 3px;
+    width: 27px;
+    border-radius: 8px;
+    background-color: #00ddff;
+  }
+  
+  #form{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+  }
+
+  #pointer2 {
+    left: 0%;
+    width: 100%;
+    height: 75px;
+    top: -10px;
+    position: absolute;
+    background: #007261;
+    
+  }
+  #pointer2:after {
+    content: "";
+    top: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 37.5px solid rgb(255, 255, 255);
+    border-top: 37.5px solid transparent;
+    border-bottom: 37.5px solid transparent;
+  }
+  
+  #pointer2:before {
+    content: "";
+    position: absolute;
+    right: -37.5px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 37.5px solid #007261;
+    border-top: 37.5px solid transparent;
+    border-bottom: 37.5px solid transparent;
+  }
+
+  #TextoAgenda2 {
+    color: #ffffff;
+    position: relative;
+    left: 160px;
+    top: 0px;
+  }
+  #TextoNomPas{
+    color: #ffffff;
+    position: absolute;
+    left: 75%;
+    bottom: 65px;
+  }
+  
+
+
+  @media (max-width: 750px) {
+    .container {
+      position: relative;
+      left: 0px;
+      top: -550px;
+      width: 85%;
+  
+    }
+    
+  .container form {
+    overflow-y: scroll;
+  }
+
+ 
+
+  .boton-modal{
+    position: relative;
+    top: -550px;
+    left:0px;
+    width: 0px;
+
+      
+  }
+  .boton-modal2{
+    position: relative;
+    top: 0px;
+    left:0px;
+    width: 0px;
+      
+  }
+  .containerMOD header {
+    position: relative;
+    top: 90px;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgb(124, 124, 124);
+  }
+  #pointer2 {
+    left: 0%;
+    width: 100%;
+    height: 75px;
+    top: -40px;
+    position: absolute;
+    background: rgba(0, 255, 8, 0.315);
+    
+  }
+  #pointer2:after {
+    content: "";
+    top: 5px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 37.5px solid rgb(255, 255, 255);
+    border-top: 37.5px solid transparent;
+    border-bottom: 37.5px solid transparent;
+  }
+  
+  #pointer2:before {
+    content: "";
+    position: absolute;
+    right: -37.5px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 37.5px solid rgba(0, 255, 8, 0.315);
+    border-top: 37.5px solid transparent;
+    border-bottom: 37.5px solid transparent;
+  }
+
+
+
+
+  
+  }
+  
+  @media (max-width: 550px) {
+  
+  }

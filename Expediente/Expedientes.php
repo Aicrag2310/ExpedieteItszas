@@ -1,4 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <html>
 <?php
 $title = "Expediente Clinico ITSZaS";
@@ -10,11 +9,10 @@ require '../Menu/menu_cabecera.php';
 <link rel="stylesheet" href="estilo_expediente_modificada2.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="../Expediente/js/jquery-3.6.1.min.js"></script>
 <!--DATATABLES-->
-<script src="../Agenda/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="../Agenda/jquery.dataTables.min.css" />
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="jquery.dataTables.min.css" />
 </head>
 
 
@@ -40,49 +38,13 @@ require '../Menu/menu_cabecera.php';
   <div id="pointer"></div>
   <h2 id="TextoAgenda" id="atras1">Expedientes</h2>
 </div>
-<div class="aside2">
 
-  <form class="" action="" method="get">
-
-    <div class="form first">
-      <div class="fields">
-        <input class="CajasText" id="nomb" type="text" name="Nombre" placeholder="Nombres">
-      </div>
-
-      <div class="fields">
-        <input class="CajasText" id="pate" type="text" name="Paterno" placeholder="Ap. paterno">
-      </div>
-
-      <div class="fields">
-        <input class="CajasText" id="mater" type="text" name="Materno" placeholder="Ap. materno">
-      </div>
-
-      <div class="fields">
-        <select class="CajasText" id="sex" type="text" name="Sexo">
-          <option value="" selected>Selecciona un Sexo</option>
-          <option value="Hombre">Hombre</option>
-          <option value="Mujer">Mujer</option>
-        </select>
-      </div>
-
-      <div class="fields">
-        <input class="CajasText" id="date" type="text" name="Control" placeholder="No. control">
-      </div>
-      
-    </div>
-
-    <div class="fields">
-      <input id="buton" class="bubbly-button" type="submit" name="enviar" value="Buscar">
-    </div>
-  </form>
-
-</div>
 
 
 <div class="container">
 
   <form method="post" action="../Datos_Del_Paciente/Dat_Pac_Interfaz.php" >
-    <table id="tabla">
+    <table id="tabla" style="width=50%">
       <thead>
         <tr>
           <th>No. control</th>
@@ -100,6 +62,7 @@ require '../Menu/menu_cabecera.php';
         ?>
       </tbody>
     </table>
+
   </form>
 </div>
 
@@ -137,4 +100,3 @@ require '../Menu/menu_cabecera.php';
   });
 </script>
 
-</html>

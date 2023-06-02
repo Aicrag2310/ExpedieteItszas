@@ -167,12 +167,12 @@ if (isset($_POST['archivo'])) {
   $pdf->SetFont('Arial','B',13);
   $pdf->Cell(30,10,'Nombre:',0,0,'L');
   $pdf->SetFont('Arial','',12);
-  $pdf->Cell(97,10,$row['2'],0,1,'L');
+  $pdf->Cell(97,10,utf8_decode($row['2']),0,1,'L');
   $pdf->SetFont('Arial','B',13);
   $pdf->Cell(30,10,'Contenido:',0,0,'L');
-  $pdf->SetFont('Arial','',10);
+  $pdf->SetFont('Arial','',12);
   $pdf->SetFillColor(255,255,255);
-  $pdf->MultiCell(120,10,$row['3'],0,1,'L');
+  $pdf->MultiCell(120,10,utf8_decode($row['3']),0,1,'L');
   
   }
 
@@ -208,7 +208,7 @@ if (isset($_POST['archivo'])) {
   
   
   
-  $pdf->Output();
+  $pdf->Output('Historial.pdf', 'D');
   
 
 

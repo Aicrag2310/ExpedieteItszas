@@ -60,8 +60,8 @@ include '../Conexion_BD/Conexion.php';
                       <input type="text" name="trabajo" placeholder="Ingrese el trabajo" value="<?php echo $Trabajo; ?>" />
                     </div>
                     <div class="input-field">
-                      <span>Baños a la semana</span>
-                      <input type="number" name="baños" placeholder="Ingrese los baños a la semana" value="<?php echo $Duchas_semana; ?>" />
+                      <span>Baños</span>
+                      <input type="text" name="baños" placeholder="Ingrese los baños a la semana" value="<?php echo $Duchas_semana; ?>" />
                     </div>
                     <div class="input-field">
                       <span>Viajes al extranjero</span>

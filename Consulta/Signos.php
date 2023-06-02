@@ -24,8 +24,8 @@
         </div>
 
         <div id="padecimiento">
-            <h5>Ingrese padecimiento</h5>
-            <textarea id="padecimientoText" name="padecimiento" placeholder="Ingrese padecimiento..." disabled></textarea>
+            <h5>Ingrese exploración física</h5>
+            <textarea id="padecimientoText" name="padecimiento" placeholder="Ingrese exploración física..." disabled></textarea>
         </div>
     </div>
 </div>
@@ -42,11 +42,11 @@
             <div class="izquierda">
                 <div class="input-field">
                     <label>Peso (kg)</label>
-                    <input required type="number" id="Peso" name="Peso" onkeyup="EvaluaPeso();" placeholder="Ingrese su peso" disabled />
+                    <input  type="number" id="Peso" name="Peso" onkeyup="EvaluaPeso();" placeholder="Ingrese su peso" disabled />
                 </div>
                 <div class="input-field">
                     <label>Altura (cm)</label>
-                    <input required type="number" id="Talla" name="Talla" onkeyup="EvaluaTalla();" placeholder="Ingrese su altura" disabled />
+                    <input  type="number" id="Talla" name="Talla" onkeyup="EvaluaTalla();" placeholder="Ingrese su altura" disabled />
                 </div>
                 <div class="input-field">
                     <label>IMC (Necesita Peso y Altura)</label>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="input-field">
                     <label>Glucosa</label>
-                    <input required type="number" id="Glucosa" name="Glucosa" onkeyup="EvaluaGluc();" placeholder="Ingrese su Glucosa" disabled />
+                    <input  type="number" id="Glucosa" name="Glucosa" onkeyup="EvaluaGluc();" placeholder="Ingrese su Glucosa" disabled />
                     <input type="text" id="Glucosa2" value="" disabled>
                 </div>
 
