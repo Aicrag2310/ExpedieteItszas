@@ -55,7 +55,7 @@
                 </div>
                 <div class="input-field">
                     <label>Temperatura</label>
-                    <input required type="number" id="Temperatura" name="Temperatura" onkeyup="EvaluaTemp();" placeholder="Ingrese su temperatura" disabled />
+                    <input required type="number" step="any" id="Temperatura" name="Temperatura" onkeyup="EvaluaTemp();" placeholder="Ingrese su temperatura" disabled />
                     <input type="text" id="Temperatura2" value="" disabled>
                 </div>
                 <div class="input-field">
