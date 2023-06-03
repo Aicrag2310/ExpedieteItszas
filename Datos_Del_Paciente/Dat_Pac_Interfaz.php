@@ -199,12 +199,12 @@ if (isset($_POST['nControl'])) {
                   </div>
 
                   <div class="input-field">
-                    <label>Numero de seguro social</label>
-                    <input type="number" name="NumeroSeguroSocial" placeholder="Ingrese el numero de seguro social" required value="<?php echo $row['Numero_Seguro_Social'] ?>" />
+                    <label>Número de seguro social</label>
+                    <input type="number" name="NumeroSeguroSocial" placeholder="Ingrese el número de seguro social" required value="<?php echo $row['Numero_Seguro_Social'] ?>" />
                   </div>
 
                   <div class="input-field">
-                    <label>Numero de Control</label>
+                    <label>Número de Control</label>
                     <!--  
                       [chr(48) AL chr(57) == Numeros 0-9]
                       [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]
@@ -716,12 +716,12 @@ elseif(isset($_SESSION['nControl'])){
                   </div>
 
                   <div class="input-field">
-                    <label>Numero de seguro social</label>
-                    <input type="number" name="NumeroSeguroSocial" placeholder="Ingrese el numero de seguro social" required value="<?php echo $row['Numero_Seguro_Social'] ?>" />
+                    <label>Número de seguro social</label>
+                    <input type="number" name="NumeroSeguroSocial" placeholder="Ingrese el número de seguro social" required value="<?php echo $row['Numero_Seguro_Social'] ?>" />
                   </div>
 
                   <div class="input-field">
-                    <label>Numero de Control</label>
+                    <label>Número de Control</label>
                     <!--  
                       [chr(48) AL chr(57) == Numeros 0-9]
                       [chr(65) AL chr(90) == Letras Mayusculas A-Z (sin Ñ)]

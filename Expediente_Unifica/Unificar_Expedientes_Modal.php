@@ -295,7 +295,7 @@ if (isset($_POST['NuevoExp']) || isset($_POST['NuevoExp_consulta'])) {
         <a href="#close" title="Close" class="close">X</a>
         <div class="aside4">
             <div id="pointer2"></div>
-            <h2 id="TextoAgenda2" id="atras1">Unificar Expedientes</h2>
+            <h2 id="TextoAgenda2" id="atras1">Unificar expedientes</h2>
         </div>
         <div class="aside5">
             <form action="" method="POST" enctype="multipart/form-data" id="scroll">
@@ -304,12 +304,12 @@ if (isset($_POST['NuevoExp']) || isset($_POST['NuevoExp_consulta'])) {
                     <div class="details personal">
                         <div class="fields">
                             <div class="input-field">
-                                <h2 class= "TextBusqueda">Expediente Principal (1)</h2>
+                                <h2 class= "TextBusqueda">Expediente principal (1)</h2>
                                 <label for="Control1">Número de control:</label>
                                 <?php include 'Buscar_Expediente1.php';?>
                             </div>
                             <div class="input-field">
-                                <h2 class= "TextBusqueda">Expediente Erroneo (2)</h2>
+                                <h2 class= "TextBusqueda">Expediente erroneo (2)</h2>
                                 <label for="Control2">Número de control:</label>
                                 <?php include 'Buscar_Expediente2.php';?>
                             </div>

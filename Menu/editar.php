@@ -87,7 +87,7 @@ $consulta=$conexion->query("SELECT `ID_User`,
               </div>
 
               <div class="input-field">
-                <label>Cedula</label>
+                <label>Cédula</label>
                 <input type="text" name="cedula" value="<?php echo $row['Cedula']?>" required/>
               </div>
 

@@ -46,7 +46,7 @@ include '../Conexion_BD/Conexion.php';
               <th>Nombre</th>
               <th>Apellido paterno</th>
               <th>Apellido materno</th>
-              <th>Cedula</th>
+              <th>Cédula</th>
               <th>Especialidad</th>
               <th>Correo</th>
               <th>Contraseña</th>
@@ -101,8 +101,8 @@ include '../Conexion_BD/Conexion.php';
                 </div>
 
                 <div class="input-field">
-                  <label>Cedula</label>
-                  <input type="text" id="cedula" name="cedula" placeholder="Ingrese su cedula" required/>
+                  <label>Cédula</label>
+                  <input type="text" id="cedula" name="cedula" placeholder="Ingrese su cédula" required/>
                 </div>
 
               </div>

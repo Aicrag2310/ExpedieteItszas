@@ -95,7 +95,7 @@ include '../Conexion_BD/Conexion.php';
                 </div>
 
                 <div class="input-field">
-                    <span >Enfermedades dermatologicas</span>
+                    <span >Enfermedades dermatológicas</span>
                     <textarea id="textArea" name="derma" placeholder="Ingrese las enfermedades neurológicas" cols="3" rows="10"><?php echo $Dermatologicas; ?> </textarea>
                 </div>
 

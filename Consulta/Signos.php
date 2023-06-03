@@ -79,8 +79,8 @@
                     <input type="text" id="diastólica2" value="" disabled>
                 </div>
                 <div class="input-field">
-                    <label>Frecuencia cardiaca</label>
-                    <input required type="number" id="cardiaca" name="cardiaca" onkeyup="EvaluaFrecCard();" placeholder="Ingrese su frecuencia cardiaca" disabled />
+                    <label>Frecuencia cardíaca</label>
+                    <input required type="number" id="cardiaca" name="cardiaca" onkeyup="EvaluaFrecCard();" placeholder="Ingrese su frecuencia cardíaca" disabled />
                     <input type="text" id="cardiaca2" value="" disabled>
                 </div>
                 <div class="input-field">
